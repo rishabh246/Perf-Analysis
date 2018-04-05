@@ -28,9 +28,15 @@ def main():
        if(packet_code == 0):
         if(fn == "rte_eth_rx_burst"):
          packet_code = 1
+       
+       if(packet_code == 1):
+        if(fn == "exit@plt"):
+         packet_code = 2
+  
        if(packet_code == 1):
         output.write(text)
         output.write("\n")
+        
 
 
 

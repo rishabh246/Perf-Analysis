@@ -15,8 +15,7 @@ cache_ages=[[] for _ in xrange(num_sets)]
 
 #Assuming replacement policy is LRU 
 
-symbol_re = re.compile("Call to libVig")
-symbol2_re = re.compile("eof")
+symbol_re = re.compile("Irrelevant to Trace")
 
 def main():
    global cache_contents
@@ -32,10 +31,9 @@ def main():
        with open(dump_file,"w") as output:
         for text in trace_lines:
          m1=symbol_re.match(text)
-	 m2 = symbol2_re.match(text)
          if(m1):
           age_cache_contents()
-         elif(not( m1 or m2)):
+         else:
           addr=int(text,16)
           block_no=addr/cache_block_size
           set_no=block_no % num_sets

@@ -15,13 +15,13 @@ def main():
      dump_file=file.replace('.demarcated','.addr_trace')
      
      with open(dump_file,"w") as output:
-      libVig=0
+      irrelevant=0
       for text in trace_lines:
-       if(text.startswith("Call to libVig") and libVig==0):
-        output.write("Call to libVig\n")
-        libVig = 1
-       elif(not(text.startswith("Call to libVig"))):
-        libVig = 0
+       if(text.startswith("Call") and irrelevant==0):
+        output.write("Irrelevant to Trace\n")
+        irrelevant = 1
+       elif(not(text.startswith("Call"))):
+        irrelevant = 0
         index = find_nth(text,"|",4)
         text = text[index+1:]
         words = text.split() 
