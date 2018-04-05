@@ -1,0 +1,6 @@
+('0000000000000480', 'dmap_get_b')
+(0, '0x480', '0x4cc')
+Calls: 2
+0x490 0x4bf
+Indirect calls/jumps: 1
+0x490

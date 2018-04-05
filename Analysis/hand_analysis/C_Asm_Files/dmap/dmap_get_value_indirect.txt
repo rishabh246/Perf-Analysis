@@ -1,0 +1,6 @@
+('00000000000005e0', 'dmap_get_value')
+(0, '0x5e0', '0x5f1')
+Calls: 0
+
+Indirect calls/jumps: 0
+

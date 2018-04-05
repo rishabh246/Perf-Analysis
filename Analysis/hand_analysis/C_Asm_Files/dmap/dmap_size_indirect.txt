@@ -1,0 +1,6 @@
+('0000000000000740', 'dmap_size')
+(0, '0x740', '0x746')
+Calls: 0
+
+Indirect calls/jumps: 0
+
