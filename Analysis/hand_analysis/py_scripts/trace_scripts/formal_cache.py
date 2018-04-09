@@ -16,23 +16,27 @@ cache_ages=[[] for _ in xrange(num_sets)]
 #Assuming replacement policy is LRU 
 
 symbol_re = re.compile("Irrelevant to Trace")
-
+symbol2_re = re.compile("Non-memory instruction")
 def main():
    global cache_contents
    global cache_ages
    for root, dirs, files in os.walk(trace_path):
     for file in files:
      with open(file) as f:
-      if file.endswith(".addr_trace"):
+      if file.endswith(".stateless_mem_trace"):
        trace_lines = (line.rstrip() for line in f)
        trace_lines = list(line for line in trace_lines if line)
-       dump_file=file.replace('.addr_trace','.addr_trace.classified')
+       dump_file=file.replace('.stateless_mem_trace','.stateless_mem_trace.classified')
 
        with open(dump_file,"w") as output:
         for text in trace_lines:
          m1=symbol_re.match(text)
+         m2=symbol2_re.match(text)
          if(m1):
           age_cache_contents()
+          output.write(text+"\n")
+         elif(m2):
+          output.write(text+"\n")
          else:
           addr=int(text,16)
           block_no=addr/cache_block_size
@@ -55,8 +59,8 @@ def age_cache_contents():
  global cache_ages
  for x in xrange(len(cache_ages)):
   for y in xrange(len(cache_ages[x])):
-   cache_ages[x][y]=set_associativity+1
-
+   #cache_ages[x][y]=set_associativity+1
+   cache_ages[x][y] = cache_ages[x][y]
 
 def update_ages(block_num,set_num):
  global cache_contents

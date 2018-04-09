@@ -12,18 +12,18 @@ def main():
     if file.endswith(".demarcated"):
      trace_lines = (line.rstrip() for line in f)
      trace_lines = list(line for line in trace_lines if line)
-     dump_file=file.replace('.demarcated','.addr_trace')
+     dump_file=file.replace('.demarcated','.stateless_mem_trace')
      
      with open(dump_file,"w") as output:
       irrelevant=0
       for text in trace_lines:
-       if(text.startswith("Call") and irrelevant==0):
+       if(text.startswith("Call")):
         output.write("Irrelevant to Trace\n")
-        irrelevant = 1
-       elif(not(text.startswith("Call"))):
-        irrelevant = 0
+       else:
         index = find_nth(text,"|",4)
         text = text[index+1:]
+        if(text == ""):
+         output.write("Non-memory instruction\n")
         words = text.split() 
         i=0
         while i < len(words):
