@@ -16,7 +16,7 @@ def main():
    for file in files:
     with open(file) as f:
      if file.endswith(".classified"):
-      trace_output.write((file[7:10])+"\n")
+      trace_output.write(file+"\n")
       trace_lines = (line.rstrip() for line in f)
       trace_lines = list(line for line in trace_lines if line)
       insns = 0

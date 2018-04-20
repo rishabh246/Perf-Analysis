@@ -18,8 +18,6 @@ def main():
      trace_lines = list(line for line in trace_lines if line)
      dump_file=file.replace('.instructions','.packet_relevant_instructions')
      packet_code = 0
-     print(i)
-     i=i+1
      with open(dump_file,"w") as output:
       for text in trace_lines:
        index1 = find_nth(text,"|",2)
