@@ -1,0 +1,6 @@
+('0000000000401580', 'vector_return_half')
+CFG has 1 nodes
+Calls: 0
+
+Indirect calls/jumps: 0
+

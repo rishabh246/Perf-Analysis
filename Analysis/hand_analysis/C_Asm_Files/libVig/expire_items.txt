@@ -1,0 +1,20 @@
+('00000000004005f0', 'expire_items')
+Call
+callq  400830 <dchain_expire_one_index>
+Call
+callq  401340 <dmap_erase>
+Call
+callq  400830 <dchain_expire_one_index>
+Call
+callq  4004a0 <__stack_chk_fail@plt>
+CFG has 5 nodes
+Node 0 can jump to Node 1
+Node 1 can jump to Node 2
+Node 1 can jump to Node 3
+Node 2 can jump to Node 2
+Node 2 can jump to Node 3
+Node 3 can jump to Node 4
+Calls: 4
+0x40063a 0x40062a 0x40063a 0x400660
+Indirect calls/jumps: 0
+

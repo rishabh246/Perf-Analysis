@@ -1,0 +1,6 @@
+('0000000000401560', 'vector_borrow_half')
+CFG has 1 nodes
+Calls: 0
+
+Indirect calls/jumps: 0
+

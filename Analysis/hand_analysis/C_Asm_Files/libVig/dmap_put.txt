@@ -1,0 +1,23 @@
+('0000000000401210', 'dmap_put')
+Indirect call
+callq  *0x8(%rbx)
+Indirect call
+callq  *0x90(%rbx)
+Indirect call
+callq  *0x50(%rbx)
+Call
+callq  400b30 <map_impl_put>
+Indirect call
+callq  *0x88(%rbx)
+Call
+callq  400b30 <map_impl_put>
+Indirect call
+callq  *0x98(%rbx)
+Call
+callq  4004a0 <__stack_chk_fail@plt>
+CFG has 2 nodes
+Node 0 can jump to Node 1
+Calls: 8
+0x40124f 0x40125f 0x40126a 0x401296 0x4012a4 0x4012d3 0x4012f0 0x401314
+Indirect calls/jumps: 5
+0x40124f 0x40125f 0x40126a 0x4012a4 0x4012f0

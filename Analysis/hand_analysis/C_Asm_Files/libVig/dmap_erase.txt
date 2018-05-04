@@ -1,0 +1,25 @@
+('0000000000401340', 'dmap_erase')
+Indirect call
+callq  *0x90(%rbx)
+Indirect call
+callq  *0x50(%rbx)
+Call
+callq  400bf0 <map_impl_erase>
+Indirect call
+callq  *0x88(%rbx)
+Call
+callq  400bf0 <map_impl_erase>
+Indirect call
+callq  *%r12
+Indirect call
+callq  *%r12
+Indirect call
+callq  *0x10(%rbx)
+Call
+callq  4004a0 <__stack_chk_fail@plt>
+CFG has 2 nodes
+Node 0 can jump to Node 1
+Calls: 9
+0x401396 0x4013a1 0x4013d2 0x4013e0 0x401417 0x401434 0x401444 0x40144a 0x401472
+Indirect calls/jumps: 6
+0x401396 0x4013a1 0x4013e0 0x401434 0x401444 0x40144a
