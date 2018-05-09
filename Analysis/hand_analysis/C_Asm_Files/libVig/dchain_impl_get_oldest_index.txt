@@ -1,0 +1,11 @@
+('0000000000400970', 'dchain_impl_get_oldest_index')
+Basic Blocks
+CFG has 4 nodes
+Node 0 can jump to Node 1
+Node 0 can jump to Node 2
+Node 2 can jump to Node 1
+Node 2 can jump to Node 3
+Calls: 0
+
+Indirect calls/jumps: 0
+

@@ -50,6 +50,7 @@ def main():
        dpdk = 0
        time = 0
        verif = 0
+       relevant = 0
 
        for fn_name in words:
         if(fn_name in stateful_fns):
@@ -64,6 +65,8 @@ def main():
         elif(fn_name in verif_fns):
          verif = 1
          break
+        elif(fn_name == "_Z12LinkedTimingPhiib"):
+	 relevant = 1
        if(stateful):
         output.write("Call to libVig model - " + fn_name + "\n")
        elif(dpdk):
@@ -72,7 +75,7 @@ def main():
         output.write("Call to Time model - " + fn_name + "\n")
        elif(verif):
         output.write("Call to Verification Code - " + fn_name + "\n")
-       else:
+       elif(relevant):
         output.write(text)
         output.write("\n") 
 

@@ -1,1 +1,5 @@
 klee_make_symbolic
+klee_int
+createList
+__printf_chk@plt
+_Z14TrashTheCachesPKhi

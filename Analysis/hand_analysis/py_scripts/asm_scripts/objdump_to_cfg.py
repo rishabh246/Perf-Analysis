@@ -4,9 +4,7 @@ import re
 import sys
 import subprocess
 import string
-import networkx as nx
 import numpy as np
-import matplotlib.pyplot as plt
 
 
 #Build a CFG for a function based on objdump -d output
@@ -33,16 +31,16 @@ root=-1 #The root of our CFG
 #Store the objdump in memory, list of tuples (address, asm)
 #Went with this over a dict since we should be iterating more than searching
 #so having it sorted by address just makes sense
-objdump=[]
-indirects=[]
-calls_ctr=[]
-blockqueue=[]
+objdump=[] #List of assembly instructions in the function 
+indirects=[] #List of indirect calls or jumps
+calls_ctr=[] 
+blockqueue=[] #Stack of program counters to trace
 paths_visited=[]
-starting_points=[]
-basic_blocks=[]
+starting_points=[] #List of starting points of a BB
+basic_blocks=[] #List of BBs
 basic_block_ctr = 0
-ending_points=[]
-G = nx.DiGraph()
+ending_points=[] #List of ending points of a BB
+ending_points_targets=[] #List of targets of an endpoint, to construct CFG
 #Offset to add to all addresses. this is 32bit ELF w/o ASLR
 #offset=0x80000000
 #offset=0x00000000
@@ -51,13 +49,17 @@ def main():
   global root
   global blockqueue
   with open(dump_file) as f:
-    for line in f:
+   begin_dump=0 
+   for line in f:
       #First find out function of interest
       m=symbol_re.match(line)
       if(m):
+	if(begin_dump == 1):
+	 begin_dump =2
         if(m.group(2) == root_name):
-          print(m.group(1), m.group(2))
-          root=int(m.group(1),16)
+         print(m.group(1), m.group(2))
+         root=int(m.group(1),16)
+	 begin_dump=1
 
       #Example tab-delimited output from objdump:
       #ADDRESS    INSTRUCTION           ASCII
@@ -73,24 +75,22 @@ def main():
       #Our in-memory representation of objdump output is an list of tuples of 
       #the form (address, instruction)
       #Note that we store the address in int form for searching
-      objdump.append((int(fields[0].replace(":",""),16), fields[2]))
+      if(begin_dump == 1):
+       objdump.append((int(fields[0].replace(":",""),16), fields[2]))
 
   if(root==-1):
     print "Could not find root function for CFG: %s" % root_name
-#  print root 
-  #process BBs until we get a return to 0, used to be recursive, but python
-  #doesn't do tail recursion so this should be better?
   blockqueue.append(root) #queue is technically a stack, but whatever
   while(len(blockqueue)>0):
     block=blockqueue.pop()
     iterate_bb(block)
 
-#  print_starting_points()
+  #print_starting_points()
   print_basic_blocks()
-#  print_ending_points()	
+  #print_ending_points()	
+  #print_ending_points_targets()
   generate_CFG() 
   print_CFG()
- # print_illustration()
   print_textfile()
   print("Calls: %d"%len(calls_ctr))
   print("%s"%array_to_hex(calls_ctr))
@@ -102,15 +102,15 @@ def array_to_hex(array):
   return string.join('0x%x' % i for i in array)
 
 def print_CFG():
-  for x in range(0,basic_block_ctr):
-     print(x)
+  print("CFG has %d nodes" %(basic_block_ctr))
   for x in range(0,basic_block_ctr):
     for y in range(0,basic_block_ctr):
       if(CFG[x,y] == 1):
 	print("Node %d can jump to Node %d" %(x,y))
 
 def print_textfile():
-  with open("Output.txt", "w") as text_file:
+  textfile=root_name+".graph"
+  with open( textfile, "w") as text_file:
       text_file.write("digraph G { \n")
       for x in range(0,basic_block_ctr):
    	text_file.write("Node%d [ tooltip = \"%s to %s\" ]\n"%(x,hex(basic_blocks[x][1]),hex(basic_blocks[x][2])))
@@ -120,25 +120,31 @@ def print_textfile():
   
       text_file.write("}\n")
 
-def print_illustration():
-   G.add_nodes_from([0,basic_block_ctr -1])
-   nx.draw(G)
-   plt.show()
-
 def print_starting_points():
-  a = 0 
+  a = 0
+  print("Starting points") 
   for x in starting_points:
-	print x 
+	print hex(x) 
         a = a+1 
-  print("Number of basic blocks =%s",a)
+  print("Number of basic blocks = %d"%(a))
  
 def print_basic_blocks():
-  for x in basic_blocks:
-        print (x[0],hex(x[1]),hex(x[2]))
+  print("Basic Blocks")
+  bb_file=root_name+"_bb.txt"
+  with open(bb_file,"w") as bb_out:
+   for x in basic_blocks:
+       bb_out.write("%s %s %s \n" %(x[0],hex(x[1]),hex(x[2])))
 
 def print_ending_points():
+  print("Ending points")
   for x in ending_points:
-        print x
+        print hex(x)
+
+def print_ending_points_targets():
+  print("Ending point targets")
+  for x in ending_points_targets:
+        print hex(x[0]),hex(x[1])
+
 def initialise_CFG():
   for x in range(0,basic_block_ctr):
     for y in range(0,basic_block_ctr):
@@ -182,6 +188,7 @@ def iterate_bb(block_addr):
   global basic_blocks
   global basic_block_ctr
   global ending_points
+  global ending_points_targets
   if( block_addr==-1):
     #Stop conditions: we return to root or an indirect (somehow)
     return
@@ -213,6 +220,8 @@ def iterate_bb(block_addr):
       if '*' in target:
         #Indirect jump, beyond scope of code
         count_indirect(objdump[i][0])
+        print("Indirect jump")
+	print(objdump[i][1])
 	#Add Basic Block
 	#basic_blocks.append((basic_block_ctr,block_addr,objdump[i][0]))
 	#basic_block_ctr = basic_block_ctr + 1
@@ -227,6 +236,8 @@ def iterate_bb(block_addr):
         basic_blocks.append((basic_block_ctr,block_addr,objdump[i][0]))
         basic_block_ctr = basic_block_ctr + 1
 	ending_points.append(objdump[i][0])
+	ending_points_targets.append((objdump[i][0],objdump[i+1][0]))
+        ending_points_targets.append((objdump[i][0],target_hex))
         return
 
     #Look for unconditional jumps
@@ -236,7 +247,8 @@ def iterate_bb(block_addr):
       #Add Basic Block
       basic_blocks.append((basic_block_ctr,block_addr,objdump[i][0]))
       basic_block_ctr = basic_block_ctr + 1
-      ending_points.append(objdump[i][0])	
+      ending_points.append(objdump[i][0])
+      ending_points_targets.append((objdump[i][0],target_hex))
       return
 
     if(instr in rets):
@@ -250,46 +262,37 @@ def iterate_bb(block_addr):
     if(instr in calls):
       count_calls(objdump[i][0])
       if '*' in target:
-        #Indirect jump, beyond scope of code
+        #Indirect call, beyond scope of code
+	print("Indirect call")
+        print(objdump[i][1])
         count_indirect(objdump[i][0])
+      else:
+	print("Call")
+        print(objdump[i][1])
+  
+  if(i==len(objdump)):
+   basic_blocks.append((basic_block_ctr,block_addr,objdump[i-2][0]))
+   basic_block_ctr = basic_block_ctr + 1
+   ending_points.append(objdump[i-2][0]) 
 
 
 def generate_CFG():
     global CFG
     global starting_points
     global ending_points
+    global ending_points
     i = -1
     initialise_CFG()
     for x in ending_points:
-          i=i+1 #Many BB's can end at the same address, cannot use ending_points.index(x)
-          target_hex=0
-          split = string.split(objdump[get_objdump_index(x)][1])
-          instr=split[0]
-          if(len(split)>=2):
-            target = split[1]
-            try:
-              target_hex = int(target,16)
-            except:
-              #already an int or an indirect (which won't be used)
-              target_hex = target
+     targets=[]
+     i=i+1
+ 
+     for y in ending_points_targets:
+      if(y[0]==x):
+       targets.append(y[1])
 
-	  if(instr in jumps):
-            if '*' in target:
-	      continue
-            else:
-              #Handle jump not taken
-              CFG[i,(starting_points.index(objdump[get_objdump_index(x)+1][0]))] = 1
-              #Handle jump taken
-              CFG[i,(starting_points.index(target_hex))] = 1
-              continue
-
-           #Look for unconditional jumps
-          if(instr in jumps_uncond):
-              CFG[i,(starting_points.index(target_hex))] = 1
-              continue
-
-          if(instr in rets):
-              continue
+     for z in targets:
+       CFG[i,(starting_points.index(z))] = 1
            
 main()
 

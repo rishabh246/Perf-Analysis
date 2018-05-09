@@ -1,6 +1,7 @@
 ('0000000000400a10', 'map_impl_get')
 Indirect call
 callq  *0x70(%rsp)
+Basic Blocks
 CFG has 10 nodes
 Node 0 can jump to Node 1
 Node 0 can jump to Node 2

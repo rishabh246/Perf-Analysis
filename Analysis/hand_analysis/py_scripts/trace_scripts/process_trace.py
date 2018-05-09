@@ -24,11 +24,11 @@ def main():
        index2 = find_nth(text,"|",3)
        fn = text[index1+1:index2].strip()
        if(packet_code == 0):
-        if(fn == "rte_eth_rx_burst"):
+        if(fn == "_Z14TrashTheCachesPKhi"):
          packet_code = 1
        
        if(packet_code == 1):
-        if(fn == "exit@plt"):
+        if(fn == "__fprintf_chk@plt"):
          packet_code = 2
   
        if(packet_code == 1):

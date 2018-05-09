@@ -1,7 +1,7 @@
 import sys
 import string
 
-inp_file = sys.argv[1]
+inp_file = "Output.txt"
 
 mem_insns = 0
 stack_insns = 0
@@ -13,13 +13,16 @@ compute_insns_perf = {
                         'addl':1,
                         'and':1,
                         'callq':1,
+                        'cltd':1,
                         'cltq':4,
                         'cmp':1,
                         'cmpl':1,
                         'imul':4,
+                        'idiv':1,
                         'jb':1,
                         'je':1,
                         'jg':1,
+                        'jl':1,
                         'jle':1,
                         'jmp':1,
                         'jmpq':1,
@@ -51,18 +54,17 @@ with open(inp_file,"r") as f:
     trace_lines = (line.rstrip() for line in f)
     trace_lines = list(line for line in trace_lines if line) 
 for line in trace_lines:
-    if "(%" in line or "(,%" in line and not ("lea" or "call" or "nop") in line:
+    if ("(%" in line or "(,%"in line ) and not ("lea" or "call" or "nop") in line:
      	mem_insns =mem_insns +1
+	print line
     elif "push" in line or "pop" in line :
         stack_insns = stack_insns+1
     else:
         words=string.split(line,'\t')
         if(len(words)<3):
-         print(len(words))
-         print(words[0])
          continue
-        print(words[2])
-        compute_insns_cost += compute_insns_perf[words[3]]
+        opcode=str(words[2]).split()
+        compute_insns_cost += compute_insns_perf[opcode[0]]
 	compute_insns = compute_insns +1 
     if  "call" in line:
         print line
@@ -70,4 +72,4 @@ for line in trace_lines:
 print("Memory Accesses = %s"%(mem_insns))
 print("Stack Operations = %s"%(stack_insns))  
 print("Compute Instructions = %s"%(compute_insns))
- 
+print("Compute Instructions Perf = %s"%(compute_insns_cost)) 

@@ -3,6 +3,7 @@ Indirect call
 callq  *0x50(%rbx)
 Call
 callq  400a10 <map_impl_get>
+Basic Blocks
 CFG has 1 nodes
 Calls: 2
 0x401180 0x4011a9

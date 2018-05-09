@@ -1,40 +1,38 @@
-     62 add
+     43 add
       3 addl
-     14 and
-    109 callq
-      4 cltq
-     26 cmp
-      3 cmpl
-      8 imul
-      1 jb
-     40 je
-      1 jg
-      7 jle
-     13 jmp
-      4 jmpq
-     22 jne
-     37 lea
-    545 mov
-      2 movabs
+    107 callq
+     14 cltd
+      1 cltq
+     16 cmp
+      1 cmpl
+     14 idiv
+      7 imul
+     38 je
+      2 jg
+      1 jl
+      6 jle
+     12 jmp
+      5 jmpq
+     16 jne
+     40 lea
+    491 mov
      18 movl
       6 movq
-     24 movslq
-     14 movzbl
-     17 movzwl
-      5 nop
-     25 nopl
-     24 nopw
-     94 pop
-    110 push
+     27 movslq
+      1 movzbl
+      7 nop
+     21 nopl
+     23 nopw
+     93 pop
+    109 push
       3 pushq
-      9 repz
-     37 retq
-      4 sar
+      6 repz
+     32 retq
       1 sbb
-      3 sete
-     17 shl
-     37 sub
+      1 sete
+      4 shl
+     21 sub
       2 subl
-     42 test
-      7 xchg
-     26 xor
+     44 test
+      5 xchg
+     24 xor

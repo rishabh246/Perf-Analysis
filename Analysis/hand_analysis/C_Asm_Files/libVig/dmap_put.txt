@@ -15,6 +15,7 @@ Indirect call
 callq  *0x98(%rbx)
 Call
 callq  4004a0 <__stack_chk_fail@plt>
+Basic Blocks
 CFG has 2 nodes
 Node 0 can jump to Node 1
 Calls: 8
