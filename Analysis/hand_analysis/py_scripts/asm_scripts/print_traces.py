@@ -60,10 +60,11 @@ def print_portions():
   with open(objdump_file,"r") as f,open("Output.txt","a") as output_file:
     text = f.readlines()
     for line in text:
+       fields = string.split(line.rstrip(),'\t')
        if start_point in line and a == 0 :
           a = 1
-       if a == 1 :
-          output_file.write(line)
+       if a == 1 and len(fields)>=3 :
+          output_file.write(fields[0]+"\t" + fields[2]+"\n")
        if end_point  in line and a == 1 :
           a = 2
 
@@ -119,16 +120,16 @@ def calculate_perf():
     trace_lines = (line.rstrip() for line in f)
     trace_lines = list(line for line in trace_lines if line)
   for line in trace_lines:
-    if ("(%" in line or "(,%"in line ) and not ("lea" or "call" or "nop") in line:
+    if ("(%" in line or "(,%"in line ) and (not ("lea" or "call" or "nop") in line):
         mem_insns =mem_insns +1
-        #print line
+        print line
     elif "push" in line or "pop" in line :
         stack_insns = stack_insns+1
     else:
         words=string.split(line,'\t')
         if(len(words)<3):
          continue
-        opcode=str(words[2]).split()
+        opcode=str(words[1]).split()
         compute_insns_cost += compute_insns_perf[opcode[0]]
         compute_insns = compute_insns +1
     if  "call" in line:
