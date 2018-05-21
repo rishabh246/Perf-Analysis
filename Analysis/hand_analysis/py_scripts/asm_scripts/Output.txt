@@ -1,19 +1,33 @@
-  400c63:	mov    %ebp,%eax
-  400c65:	and    %r13d,%eax
-  400c68:	add    %r10d,%eax
-  400c6b:	and    %r13d,%eax
-  400c6e:	cltq
-  400c70:	lea    0x0(,%rax,4),%rbx
-  400c78:	lea    (%r15,%rbx,1),%r14
-  400c7c:	add    %rcx,%rbx
-  400c7f:	cmp    %r8d,(%rdx,%rax,4)
-  400c83:	mov    (%rbx),%r12d
-  400c86:	jne    400c50 <map_impl_erase+0x60>
-  400c88:	mov    (%r14),%esi
-  400c8b:	test   %esi,%esi
-  400c8d:	je     400c50 <map_impl_erase+0x60>
-  400c50:	add    $0x1,%ebp
-  400c53:	sub    $0x1,%r12d
-  400c57:	cmp    %ebp,%r9d
-  400c5a:	mov    %r12d,(%rbx)
-  400c5d:	je     400cfe <map_impl_erase+0x10e>
+  400670:	push   %r14
+  400672:	push   %r13
+  400674:	mov    %rdx,%r14
+  400677:	push   %r12
+  400679:	push   %rbp
+  40067a:	mov    %rdi,%r13
+  40067d:	push   %rbx
+  40067e:	mov    %rsi,%rbp
+  400681:	mov    %rcx,%r12
+  400684:	xor    %ebx,%ebx
+  400686:	sub    $0x20,%rsp
+  40068a:	mov    %fs:0x28,%rax
+  400693:	mov    %rax,0x18(%rsp)
+  400698:	xor    %eax,%eax
+  40069a:	movl   $0xffffffff,0xc(%rsp)
+  4006a2:	jmp    4006df <expire_items_single_map+0x6f>
+  4006df:	lea    0xc(%rsp),%rsi
+  4006e4:	mov    %r12,%rdx
+  4006e7:	mov    %r13,%rdi
+  4006ea:	callq  400830 <dchain_expire_one_index>
+  4006ef:	test   %eax,%eax
+  4006f1:	jne    4006a8 <expire_items_single_map+0x38>
+  4006f3:	mov    0x18(%rsp),%rcx
+  4006f8:	xor    %fs:0x28,%rcx
+  400701:	mov    %ebx,%eax
+  400703:	jne    400712 <expire_items_single_map+0xa2>
+  400705:	add    $0x20,%rsp
+  400709:	pop    %rbx
+  40070a:	pop    %rbp
+  40070b:	pop    %r12
+  40070d:	pop    %r13
+  40070f:	pop    %r14
+  400711:	retq

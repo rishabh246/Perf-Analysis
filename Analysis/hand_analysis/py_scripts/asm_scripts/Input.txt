@@ -1,0 +1,20 @@
+  400930:	add    $0x2,%esi
+  400933:	movslq %esi,%rax
+  400936:	lea    (%rdi,%rax,8),%rcx
+  40093a:	mov    (%rcx),%r8d
+  40093d:	movslq 0x4(%rcx),%rdx
+  400941:	test   %r8d,%r8d
+  400944:	je     400950 <dchain_impl_free_index+0x20>
+  400946:	xor    %eax,%eax
+  400948:	cmp    %edx,%r8d
+  40094b:	jne    400950 <dchain_impl_free_index+0x20>
+  400950:	movslq %r8d,%rax
+  400953:	mov    %edx,0x4(%rdi,%rax,8)
+  400957:	mov    0xc(%rdi),%eax
+  40095a:	mov    %r8d,(%rdi,%rdx,8)
+  40095e:	mov    %eax,0x4(%rcx)
+  400961:	mov    %eax,(%rcx)
+  400963:	mov    $0x1,%eax
+  400968:	mov    %esi,0xc(%rdi)
+  40096b:	mov    %esi,0x8(%rdi)
+  40096e:	retq

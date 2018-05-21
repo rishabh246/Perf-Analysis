@@ -16,7 +16,8 @@ fn_names=[
               "map_allocate" ,"map_get" ,"map_put", "map_erase",
               "dmap_allocate" ,"dmap_get_a", "dmap_get_b", "dmap_put", "dmap_erase",
               "expire_items" ,"expire_items_single_map",
-              "vector_allocate" ,"vector_borrow_full", "vector_borrow_half", "vector_return_full", "vector_return_half"
+              "vector_allocate" ,"vector_borrow_full", "vector_borrow_half", "vector_return_full", "vector_return_half",
+             "int_key_eq", "ext_key_eq", "int_key_hash","ext_key_hash", "flow_extract_keys", "flow_pack_keys", "flow_cpy","flow_destroy" 
           ]
 fn_name=""
 bb_file=""
@@ -70,10 +71,8 @@ def print_portions():
 
 def calculate_perf():
   mem_insns = 0
-  stack_insns = 0
   compute_insns = 0
   compute_insns_cost = 0
-
   compute_insns_perf = {
                         'add':1,
                         'addl':1,
@@ -122,13 +121,13 @@ def calculate_perf():
   for line in trace_lines:
     if ("(%" in line or "(,%"in line ) and (not ("lea" or "call" or "nop") in line):
         mem_insns =mem_insns +1
-        print line
     elif "push" in line or "pop" in line :
-        stack_insns = stack_insns+1
+        mem_insns = mem_insns+1
     else:
         words=string.split(line,'\t')
-        if(len(words)<3):
-         continue
+        if(len(words)<2):
+         print line
+	 continue
         opcode=str(words[1]).split()
         compute_insns_cost += compute_insns_perf[opcode[0]]
         compute_insns = compute_insns +1
@@ -136,8 +135,8 @@ def calculate_perf():
         print line
 
   print("Memory Accesses = %s"%(mem_insns))
-  print("Stack Operations = %s"%(stack_insns))
   print("Compute Instructions = %s"%(compute_insns))
   print("Compute Instructions Perf = %s"%(compute_insns_cost))
+  print("Total Instructions = %s" %(compute_insns+mem_insns))
 
 main()
