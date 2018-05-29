@@ -1,0 +1,7 @@
+('0000000000401230', 'vector_return_full')
+Basic Blocks
+CFG has 1 nodes
+Calls: 0
+
+Indirect calls/jumps: 0
+

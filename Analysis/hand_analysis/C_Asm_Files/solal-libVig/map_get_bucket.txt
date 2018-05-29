@@ -1,0 +1,9 @@
+('0000000000400a90', 'map_get_bucket')
+Indirect call
+callq  *0x100010(%rax)
+Basic Blocks
+CFG has 1 nodes
+Calls: 1
+0x400a9a
+Indirect calls/jumps: 1
+0x400a9a

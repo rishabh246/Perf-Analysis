@@ -1,0 +1,283 @@
+router_options.o:     file format elf64-x86-64
+
+
+Disassembly of section .text:
+
+0000000000000000 <handle_packet_timestamp>:
+handle_packet_timestamp(struct ipv4_hdr* header, uint32_t router_ip, uint32_t current_milliseconds_utc)
+{
+        uint8_t options_length = (header->version_ihl & 0xF) - 5;
+        uint8_t* options_bytes = (uint8_t*) ((uint32_t*) header + 5);
+        uint8_t options_bytes_count = options_length * 4;
+        while (options_bytes_count > 0) {
+   0:   0f b6 0f                movzbl (%rdi),%ecx
+
+bool
+handle_packet_timestamp(struct ipv4_hdr* header, uint32_t router_ip, uint32_t current_milliseconds_utc)
+{
+        uint8_t options_length = (header->version_ihl & 0xF) - 5;
+        uint8_t* options_bytes = (uint8_t*) ((uint32_t*) header + 5);
+   3:   48 8d 47 14             lea    0x14(%rdi),%rax
+        uint8_t options_bytes_count = options_length * 4;
+        while (options_bytes_count > 0) {
+   7:   83 e1 0f                and    $0xf,%ecx
+   a:   80 f9 05                cmp    $0x5,%cl
+   d:   74 45                   je     54 <handle_packet_timestamp+0x54>
+                // Option type
+                uint8_t opt_type = *options_bytes;
+   f:   0f b6 4f 14             movzbl 0x14(%rdi),%ecx
+                options_bytes++;
+  13:   48 83 c7 15             add    $0x15,%rdi
+
+                if (opt_type == 0) {
+  17:   84 c9                   test   %cl,%cl
+  19:   75 26                   jne    41 <handle_packet_timestamp+0x41>
+  1b:   eb 37                   jmp    54 <handle_packet_timestamp+0x54>
+  1d:   0f 1f 00                nopl   (%rax)
+                        // No-op
+                        continue;
+                }
+
+                // Option length
+                uint8_t opt_length = *options_bytes;
+  20:   0f b6 78 01             movzbl 0x1(%rax),%edi
+                options_bytes++;
+  24:   4c 8d 40 02             lea    0x2(%rax),%r8
+
+                // We're only interested in the timestamp
+                if (opt_type != 68) {
+  28:   80 f9 44                cmp    $0x44,%cl
+  2b:   74 33                   je     60 <handle_packet_timestamp+0x60>
+
+                // Increment the pointer
+                *timestamp_pointer_ptr = *timestamp_pointer_ptr + required_length;
+
+                // Then, skip over the remaining bytes (-2 because the timestamp pointer is the 3rd byte)
+                options_bytes = timestamp_pointer_ptr + opt_length - 2;
+  2d:   40 0f b6 cf             movzbl %dil,%ecx
+  31:   49 8d 44 08 fe          lea    -0x2(%r8,%rcx,1),%rax
+  36:   0f b6 08                movzbl (%rax),%ecx
+        uint8_t* options_bytes = (uint8_t*) ((uint32_t*) header + 5);
+        uint8_t options_bytes_count = options_length * 4;
+        while (options_bytes_count > 0) {
+                // Option type
+                uint8_t opt_type = *options_bytes;
+                options_bytes++;
+  39:   48 8d 78 01             lea    0x1(%rax),%rdi
+
+                if (opt_type == 0) {
+  3d:   84 c9                   test   %cl,%cl
+  3f:   74 13                   je     54 <handle_packet_timestamp+0x54>
+                        // End of options
+                        break;
+                }
+
+                if (opt_type == 1) {
+  41:   80 f9 01                cmp    $0x1,%cl
+  44:   75 da                   jne    20 <handle_packet_timestamp+0x20>
+  46:   0f b6 0f                movzbl (%rdi),%ecx
+  49:   48 89 f8                mov    %rdi,%rax
+        uint8_t* options_bytes = (uint8_t*) ((uint32_t*) header + 5);
+        uint8_t options_bytes_count = options_length * 4;
+        while (options_bytes_count > 0) {
+                // Option type
+                uint8_t opt_type = *options_bytes;
+                options_bytes++;
+  4c:   48 8d 78 01             lea    0x1(%rax),%rdi
+
+                if (opt_type == 0) {
+  50:   84 c9                   test   %cl,%cl
+  52:   75 ed                   jne    41 <handle_packet_timestamp+0x41>
+                // Then, skip over the remaining bytes (-2 because the timestamp pointer is the 3rd byte)
+                options_bytes = timestamp_pointer_ptr + opt_length - 2;
+        }
+
+        // If we reached this, we're good!
+        return true;
+  54:   b8 01 00 00 00          mov    $0x1,%eax
+  59:   c3                      retq
+  5a:   66 0f 1f 44 00 00       nopw   0x0(%rax,%rax,1)
+                }
+
+                // OK, we have a timestamp option; now, let's look at the pointer to see if we can do something
+                // Remember pointer pointer (ha...) for later
+                uint8_t* timestamp_pointer_ptr = options_bytes;
+                uint8_t timestamp_pointer = *options_bytes;
+  60:   0f b6 48 02             movzbl 0x2(%rax),%ecx
+                options_bytes++;
+                if (timestamp_pointer > opt_length) {
+  64:   40 38 cf                cmp    %cl,%dil
+  67:   73 37                   jae    a0 <handle_packet_timestamp+0xa0>
+                        // Timestamp full!
+                        // Let's increment the overflow instead
+                        uint8_t timestamp_overflow = (*options_bytes & 0xF0) >> 4;
+  69:   0f b6 48 03             movzbl 0x3(%rax),%ecx
+  6d:   41 89 c8                mov    %ecx,%r8d
+  70:   41 c0 e8 04             shr    $0x4,%r8b
+                        if (timestamp_overflow == 0xF) {
+  74:   41 80 f8 0f             cmp    $0xf,%r8b
+  78:   0f 84 9a 00 00 00       je     118 <handle_packet_timestamp+0x118>
+                        uint8_t timestamp_flag = *options_bytes & 0xF;
+                        *options_bytes = ((timestamp_overflow + 1) << 4) + timestamp_flag;
+                        *options_bytes++;
+
+                        // Skip remaining bytes; -2 because we counted type and length, -2 because we counter pointer and overflow/flag
+                        *options_bytes += (opt_length - 2 - 2);
+  7e:   40 02 78 04             add    0x4(%rax),%dil
+                                return false;
+                        }
+
+                        // Increment overflow, continue
+                        uint8_t timestamp_flag = *options_bytes & 0xF;
+                        *options_bytes = ((timestamp_overflow + 1) << 4) + timestamp_flag;
+  82:   41 83 c0 01             add    $0x1,%r8d
+  86:   83 e1 0f                and    $0xf,%ecx
+                        *options_bytes++;
+  89:   48 83 c0 04             add    $0x4,%rax
+                                return false;
+                        }
+
+                        // Increment overflow, continue
+                        uint8_t timestamp_flag = *options_bytes & 0xF;
+                        *options_bytes = ((timestamp_overflow + 1) << 4) + timestamp_flag;
+  8d:   41 c1 e0 04             shl    $0x4,%r8d
+  91:   44 01 c1                add    %r8d,%ecx
+  94:   88 48 ff                mov    %cl,-0x1(%rax)
+                        *options_bytes++;
+
+                        // Skip remaining bytes; -2 because we counted type and length, -2 because we counter pointer and overflow/flag
+                        *options_bytes += (opt_length - 2 - 2);
+  97:   89 f9                   mov    %edi,%ecx
+  99:   83 e9 04                sub    $0x4,%ecx
+  9c:   88 08                   mov    %cl,(%rax)
+                        continue;
+  9e:   eb 99                   jmp    39 <handle_packet_timestamp+0x39>
+                uint8_t timestamp_flag = *options_bytes & 0xF;
+                *options_bytes++;
+
+                // timestamp pointer -1 cause it has a +1 according to the spec
+                uint8_t remaining_length = opt_length - (timestamp_pointer - 1);
+                uint8_t required_length = timestamp_flag == 0 ? 4 : 8;
+  a0:   44 0f b6 48 03          movzbl 0x3(%rax),%r9d
+                // First get the flag, to know whether timestamps are prefixed with addresses
+                uint8_t timestamp_flag = *options_bytes & 0xF;
+                *options_bytes++;
+
+                // timestamp pointer -1 cause it has a +1 according to the spec
+                uint8_t remaining_length = opt_length - (timestamp_pointer - 1);
+  a5:   44 8d 57 01             lea    0x1(%rdi),%r10d
+
+                // OK, we have a timestamp option; now, let's look at the pointer to see if we can do something
+                // Remember pointer pointer (ha...) for later
+                uint8_t* timestamp_pointer_ptr = options_bytes;
+                uint8_t timestamp_pointer = *options_bytes;
+                options_bytes++;
+  a9:   4c 8d 58 03             lea    0x3(%rax),%r11
+                // First get the flag, to know whether timestamps are prefixed with addresses
+                uint8_t timestamp_flag = *options_bytes & 0xF;
+                *options_bytes++;
+
+                // timestamp pointer -1 cause it has a +1 according to the spec
+                uint8_t remaining_length = opt_length - (timestamp_pointer - 1);
+  ad:   41 29 ca                sub    %ecx,%r10d
+                uint8_t required_length = timestamp_flag == 0 ? 4 : 8;
+  b0:   41 83 e1 0f             and    $0xf,%r9d
+  b4:   74 2a                   je     e0 <handle_packet_timestamp+0xe0>
+                if (remaining_length < required_length) {
+  b6:   41 80 fa 07             cmp    $0x7,%r10b
+  ba:   76 5c                   jbe    118 <handle_packet_timestamp+0x118>
+                        return false;
+                }
+
+                // OK, so we have enough space; let's go write!
+                // Remove 5 from the pointer since we have already skipped over type, length, pointer, overflow/flag, and pointer has a +1
+                options_bytes += (timestamp_pointer - 5);
+  bc:   4d 8d 54 0b fc          lea    -0x4(%r11,%rcx,1),%r10
+
+                // May be unaligned. Have fun dealing with _that_, contract writer! :D
+                uint32_t* timestamp_bytes = (uint32_t*) options_bytes;
+
+                // ... but first, if the tag is 3, addresses are pre-determined, so let's check whether we are supposed to write
+                if (timestamp_flag == 3) {
+  c1:   41 80 f9 03             cmp    $0x3,%r9b
+  c5:   75 39                   jne    100 <handle_packet_timestamp+0x100>
+                        if (*timestamp_bytes != router_ip) {
+  c7:   41 39 32                cmp    %esi,(%r10)
+  ca:   74 3d                   je     109 <handle_packet_timestamp+0x109>
+  cc:   41 0f b6 0a             movzbl (%r10),%ecx
+  d0:   4c 89 d0                mov    %r10,%rax
+  d3:   e9 61 ff ff ff          jmpq   39 <handle_packet_timestamp+0x39>
+  d8:   0f 1f 84 00 00 00 00    nopl   0x0(%rax,%rax,1)
+  df:   00
+                *options_bytes++;
+
+                // timestamp pointer -1 cause it has a +1 according to the spec
+                uint8_t remaining_length = opt_length - (timestamp_pointer - 1);
+                uint8_t required_length = timestamp_flag == 0 ? 4 : 8;
+                if (remaining_length < required_length) {
+  e0:   41 80 fa 03             cmp    $0x3,%r10b
+  e4:   76 32                   jbe    118 <handle_packet_timestamp+0x118>
+                        return false;
+                }
+
+                // OK, so we have enough space; let's go write!
+                // Remove 5 from the pointer since we have already skipped over type, length, pointer, overflow/flag, and pointer has a +1
+                options_bytes += (timestamp_pointer - 5);
+  e6:   4d 8d 54 0b fc          lea    -0x4(%r11,%rcx,1),%r10
+                uint8_t timestamp_flag = *options_bytes & 0xF;
+                *options_bytes++;
+
+                // timestamp pointer -1 cause it has a +1 according to the spec
+                uint8_t remaining_length = opt_length - (timestamp_pointer - 1);
+                uint8_t required_length = timestamp_flag == 0 ? 4 : 8;
+  eb:   b9 04 00 00 00          mov    $0x4,%ecx
+                        *timestamp_bytes = router_ip;
+                        timestamp_bytes++;
+                }
+
+                // Write the timestamp
+                *timestamp_bytes = current_milliseconds_utc;
+  f0:   41 89 12                mov    %edx,(%r10)
+
+                // Increment the pointer
+                *timestamp_pointer_ptr = *timestamp_pointer_ptr + required_length;
+  f3:   00 48 02                add    %cl,0x2(%rax)
+  f6:   e9 32 ff ff ff          jmpq   2d <handle_packet_timestamp+0x2d>
+  fb:   0f 1f 44 00 00          nopl   0x0(%rax,%rax,1)
+
+                        timestamp_bytes++;
+                }
+
+                // If flag is 1, write our IP
+                if (timestamp_flag == 1) {
+ 100:   41 80 f9 01             cmp    $0x1,%r9b
+ 104:   75 15                   jne    11b <handle_packet_timestamp+0x11b>
+                        *timestamp_bytes = router_ip;
+ 106:   41 89 32                mov    %esi,(%r10)
+                        timestamp_bytes++;
+ 109:   49 83 c2 04             add    $0x4,%r10
+                uint8_t timestamp_flag = *options_bytes & 0xF;
+                *options_bytes++;
+
+                // timestamp pointer -1 cause it has a +1 according to the spec
+                uint8_t remaining_length = opt_length - (timestamp_pointer - 1);
+                uint8_t required_length = timestamp_flag == 0 ? 4 : 8;
+ 10d:   b9 08 00 00 00          mov    $0x8,%ecx
+ 112:   eb dc                   jmp    f0 <handle_packet_timestamp+0xf0>
+ 114:   0f 1f 40 00             nopl   0x0(%rax)
+                        // Timestamp full!
+                        // Let's increment the overflow instead
+                        uint8_t timestamp_overflow = (*options_bytes & 0xF0) >> 4;
+                        if (timestamp_overflow == 0xF) {
+                                // Overflow overflow... discard packet, as per RFC 791
+                                return false;
+ 118:   31 c0                   xor    %eax,%eax
+ 11a:   c3                      retq
+                uint8_t timestamp_flag = *options_bytes & 0xF;
+                *options_bytes++;
+
+                // timestamp pointer -1 cause it has a +1 according to the spec
+                uint8_t remaining_length = opt_length - (timestamp_pointer - 1);
+                uint8_t required_length = timestamp_flag == 0 ? 4 : 8;
+ 11b:   b9 08 00 00 00          mov    $0x8,%ecx
+ 120:   eb ce                   jmp    f0 <handle_packet_timestamp+0xf0>

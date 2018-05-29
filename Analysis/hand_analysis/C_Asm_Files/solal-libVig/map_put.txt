@@ -1,0 +1,15 @@
+('0000000000400c70', 'map_put')
+Indirect call
+callq  *0x100010(%rbx)
+Call
+callq  400510 <abort@plt>
+Basic Blocks
+CFG has 4 nodes
+Node 0 can jump to Node 1
+Node 1 can jump to Node 2
+Node 2 can jump to Node 1
+Node 2 can jump to Node 3
+Calls: 2
+0x400c7f 0x400ce0
+Indirect calls/jumps: 1
+0x400c7f

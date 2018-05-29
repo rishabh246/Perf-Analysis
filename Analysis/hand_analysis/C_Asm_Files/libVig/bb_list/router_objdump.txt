@@ -1,0 +1,94 @@
+
+router_options.o:     file format elf64-x86-64
+
+
+Disassembly of section .text:
+
+0000000000000000 <handle_packet_timestamp>:
+   0:	0f b6 0f             	movzbl (%rdi),%ecx
+   3:	48 8d 47 14          	lea    0x14(%rdi),%rax
+   7:	83 e1 0f             	and    $0xf,%ecx
+   a:	80 f9 05             	cmp    $0x5,%cl
+   d:	74 45                	je     54 <handle_packet_timestamp+0x54>
+   f:	0f b6 4f 14          	movzbl 0x14(%rdi),%ecx
+  13:	48 83 c7 15          	add    $0x15,%rdi
+  17:	84 c9                	test   %cl,%cl
+  19:	75 26                	jne    41 <handle_packet_timestamp+0x41>
+  1b:	eb 37                	jmp    54 <handle_packet_timestamp+0x54>
+  1d:	0f 1f 00             	nopl   (%rax)
+  20:	0f b6 78 01          	movzbl 0x1(%rax),%edi
+  24:	4c 8d 40 02          	lea    0x2(%rax),%r8
+  28:	80 f9 44             	cmp    $0x44,%cl
+  2b:	74 33                	je     60 <handle_packet_timestamp+0x60>
+  2d:	40 0f b6 cf          	movzbl %dil,%ecx
+  31:	49 8d 44 08 fe       	lea    -0x2(%r8,%rcx,1),%rax
+  36:	0f b6 08             	movzbl (%rax),%ecx
+  39:	48 8d 78 01          	lea    0x1(%rax),%rdi
+  3d:	84 c9                	test   %cl,%cl
+  3f:	74 13                	je     54 <handle_packet_timestamp+0x54>
+  41:	80 f9 01             	cmp    $0x1,%cl
+  44:	75 da                	jne    20 <handle_packet_timestamp+0x20>
+  46:	0f b6 0f             	movzbl (%rdi),%ecx
+  49:	48 89 f8             	mov    %rdi,%rax
+  4c:	48 8d 78 01          	lea    0x1(%rax),%rdi
+  50:	84 c9                	test   %cl,%cl
+  52:	75 ed                	jne    41 <handle_packet_timestamp+0x41>
+  54:	b8 01 00 00 00       	mov    $0x1,%eax
+  59:	c3                   	retq   
+  5a:	66 0f 1f 44 00 00    	nopw   0x0(%rax,%rax,1)
+  60:	0f b6 48 02          	movzbl 0x2(%rax),%ecx
+  64:	40 38 cf             	cmp    %cl,%dil
+  67:	73 37                	jae    a0 <handle_packet_timestamp+0xa0>
+  69:	0f b6 48 03          	movzbl 0x3(%rax),%ecx
+  6d:	41 89 c8             	mov    %ecx,%r8d
+  70:	41 c0 e8 04          	shr    $0x4,%r8b
+  74:	41 80 f8 0f          	cmp    $0xf,%r8b
+  78:	0f 84 9a 00 00 00    	je     118 <handle_packet_timestamp+0x118>
+  7e:	40 02 78 04          	add    0x4(%rax),%dil
+  82:	41 83 c0 01          	add    $0x1,%r8d
+  86:	83 e1 0f             	and    $0xf,%ecx
+  89:	48 83 c0 04          	add    $0x4,%rax
+  8d:	41 c1 e0 04          	shl    $0x4,%r8d
+  91:	44 01 c1             	add    %r8d,%ecx
+  94:	88 48 ff             	mov    %cl,-0x1(%rax)
+  97:	89 f9                	mov    %edi,%ecx
+  99:	83 e9 04             	sub    $0x4,%ecx
+  9c:	88 08                	mov    %cl,(%rax)
+  9e:	eb 99                	jmp    39 <handle_packet_timestamp+0x39>
+  a0:	44 0f b6 48 03       	movzbl 0x3(%rax),%r9d
+  a5:	44 8d 57 01          	lea    0x1(%rdi),%r10d
+  a9:	4c 8d 58 03          	lea    0x3(%rax),%r11
+  ad:	41 29 ca             	sub    %ecx,%r10d
+  b0:	41 83 e1 0f          	and    $0xf,%r9d
+  b4:	74 2a                	je     e0 <handle_packet_timestamp+0xe0>
+  b6:	41 80 fa 07          	cmp    $0x7,%r10b
+  ba:	76 5c                	jbe    118 <handle_packet_timestamp+0x118>
+  bc:	4d 8d 54 0b fc       	lea    -0x4(%r11,%rcx,1),%r10
+  c1:	41 80 f9 03          	cmp    $0x3,%r9b
+  c5:	75 39                	jne    100 <handle_packet_timestamp+0x100>
+  c7:	41 39 32             	cmp    %esi,(%r10)
+  ca:	74 3d                	je     109 <handle_packet_timestamp+0x109>
+  cc:	41 0f b6 0a          	movzbl (%r10),%ecx
+  d0:	4c 89 d0             	mov    %r10,%rax
+  d3:	e9 61 ff ff ff       	jmpq   39 <handle_packet_timestamp+0x39>
+  d8:	0f 1f 84 00 00 00 00 	nopl   0x0(%rax,%rax,1)
+  df:	00 
+  e0:	41 80 fa 03          	cmp    $0x3,%r10b
+  e4:	76 32                	jbe    118 <handle_packet_timestamp+0x118>
+  e6:	4d 8d 54 0b fc       	lea    -0x4(%r11,%rcx,1),%r10
+  eb:	b9 04 00 00 00       	mov    $0x4,%ecx
+  f0:	41 89 12             	mov    %edx,(%r10)
+  f3:	00 48 02             	add    %cl,0x2(%rax)
+  f6:	e9 32 ff ff ff       	jmpq   2d <handle_packet_timestamp+0x2d>
+  fb:	0f 1f 44 00 00       	nopl   0x0(%rax,%rax,1)
+ 100:	41 80 f9 01          	cmp    $0x1,%r9b
+ 104:	75 15                	jne    11b <handle_packet_timestamp+0x11b>
+ 106:	41 89 32             	mov    %esi,(%r10)
+ 109:	49 83 c2 04          	add    $0x4,%r10
+ 10d:	b9 08 00 00 00       	mov    $0x8,%ecx
+ 112:	eb dc                	jmp    f0 <handle_packet_timestamp+0xf0>
+ 114:	0f 1f 40 00          	nopl   0x0(%rax)
+ 118:	31 c0                	xor    %eax,%eax
+ 11a:	c3                   	retq   
+ 11b:	b9 08 00 00 00       	mov    $0x8,%ecx
+ 120:	eb ce                	jmp    f0 <handle_packet_timestamp+0xf0>

@@ -8,6 +8,8 @@ import string
 import os
 
 bb_path=sys.argv[1]
+objdump_file=sys.argv[2]
+
 
 fn_names=[
               "dchain_impl_allocate_new_index", "dchain_impl_free_index" ,"dchain_impl_get_oldest_index", "dchain_impl_init", "dchain_impl_rejuvenate_index",
@@ -17,11 +19,11 @@ fn_names=[
               "dmap_allocate" ,"dmap_get_a", "dmap_get_b", "dmap_put", "dmap_erase",
               "expire_items" ,"expire_items_single_map",
               "vector_allocate" ,"vector_borrow_full", "vector_borrow_half", "vector_return_full", "vector_return_half",
-             "int_key_eq", "ext_key_eq", "int_key_hash","ext_key_hash", "flow_extract_keys", "flow_pack_keys", "flow_cpy","flow_destroy" 
+             "int_key_eq", "ext_key_eq", "int_key_hash","ext_key_hash", "flow_extract_keys", "flow_pack_keys", "flow_cpy","flow_destroy", 
+	     "handle_packet_timestamp"
           ]
 fn_name=""
 bb_file=""
-objdump_file=bb_path+"/stateful_objdump.txt"
 start_point=""
 end_point=""
 
@@ -35,7 +37,7 @@ def main():
   output_file =  open("Output.txt",'w')
   output_file.close()
   
-  for i in range(2,len(sys.argv)):
+  for i in range(3,len(sys.argv)):
     if sys.argv[i] in fn_names:
       fn_name=sys.argv[i]
       bb_file=bb_path+"/"+fn_name+"_bb.txt"
@@ -83,7 +85,7 @@ def calculate_perf():
                         'cmp':1,
                         'cmpl':1,
                         'imul':4,
-                        'idiv':1,
+                        'idiv':90,
                         'jb':1,
                         'je':1,
                         'jg':1,
@@ -92,6 +94,8 @@ def calculate_perf():
                         'jmp':1,
                         'jmpq':1,
                         'jne':1,
+			'jae':1,
+                        'jbe':1,
                         'lea':3,
                          'mov':1,
                         'movabs':1,
@@ -106,6 +110,8 @@ def calculate_perf():
                          'repz':1,
                         'retq':1,
                         'sar':1,
+                        'shr':1,
+                        'shl':1,
                          'sbb':2,
                          'sete':1,
                         'shl':4,

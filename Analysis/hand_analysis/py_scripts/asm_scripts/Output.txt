@@ -1,33 +1,45 @@
-  400670:	push   %r14
-  400672:	push   %r13
-  400674:	mov    %rdx,%r14
-  400677:	push   %r12
-  400679:	push   %rbp
-  40067a:	mov    %rdi,%r13
-  40067d:	push   %rbx
-  40067e:	mov    %rsi,%rbp
-  400681:	mov    %rcx,%r12
-  400684:	xor    %ebx,%ebx
-  400686:	sub    $0x20,%rsp
-  40068a:	mov    %fs:0x28,%rax
-  400693:	mov    %rax,0x18(%rsp)
-  400698:	xor    %eax,%eax
-  40069a:	movl   $0xffffffff,0xc(%rsp)
-  4006a2:	jmp    4006df <expire_items_single_map+0x6f>
-  4006df:	lea    0xc(%rsp),%rsi
-  4006e4:	mov    %r12,%rdx
-  4006e7:	mov    %r13,%rdi
-  4006ea:	callq  400830 <dchain_expire_one_index>
-  4006ef:	test   %eax,%eax
-  4006f1:	jne    4006a8 <expire_items_single_map+0x38>
-  4006f3:	mov    0x18(%rsp),%rcx
-  4006f8:	xor    %fs:0x28,%rcx
-  400701:	mov    %ebx,%eax
-  400703:	jne    400712 <expire_items_single_map+0xa2>
-  400705:	add    $0x20,%rsp
-  400709:	pop    %rbx
-  40070a:	pop    %rbp
-  40070b:	pop    %r12
-  40070d:	pop    %r13
-  40070f:	pop    %r14
-  400711:	retq
+   0:	movzbl (%rdi),%ecx
+   3:	lea    0x14(%rdi),%rax
+   7:	and    $0xf,%ecx
+   a:	cmp    $0x5,%cl
+   d:	je     54 <handle_packet_timestamp+0x54>
+   f:	movzbl 0x14(%rdi),%ecx
+  13:	add    $0x15,%rdi
+  17:	test   %cl,%cl
+  19:	jne    41 <handle_packet_timestamp+0x41>
+  41:	cmp    $0x1,%cl
+  44:	jne    20 <handle_packet_timestamp+0x20>
+  20:	movzbl 0x1(%rax),%edi
+  24:	lea    0x2(%rax),%r8
+  28:	cmp    $0x44,%cl
+  2b:	je     60 <handle_packet_timestamp+0x60>
+  60:	movzbl 0x2(%rax),%ecx
+  64:	cmp    %cl,%dil
+  67:	jae    a0 <handle_packet_timestamp+0xa0>
+  a0:	movzbl 0x3(%rax),%r9d
+  a5:	lea    0x1(%rdi),%r10d
+  a9:	lea    0x3(%rax),%r11
+  ad:	sub    %ecx,%r10d
+  b0:	and    $0xf,%r9d
+  b4:	je     e0 <handle_packet_timestamp+0xe0>
+  b6:	cmp    $0x7,%r10b
+  ba:	jbe    118 <handle_packet_timestamp+0x118>
+  bc:	lea    -0x4(%r11,%rcx,1),%r10
+  c1:	cmp    $0x3,%r9b
+  c5:	jne    100 <handle_packet_timestamp+0x100>
+  c7:	cmp    %esi,(%r10)
+  ca:	je     109 <handle_packet_timestamp+0x109>
+ 109:	add    $0x4,%r10
+ 10d:	mov    $0x8,%ecx
+ 112:	jmp    f0 <handle_packet_timestamp+0xf0>
+  f0:	mov    %edx,(%r10)
+  f3:	add    %cl,0x2(%rax)
+  f6:	jmpq   2d <handle_packet_timestamp+0x2d>
+  2d:	movzbl %dil,%ecx
+  31:	lea    -0x2(%r8,%rcx,1),%rax
+  36:	movzbl (%rax),%ecx
+  39:	lea    0x1(%rax),%rdi
+  3d:	test   %cl,%cl
+  3f:	je     54 <handle_packet_timestamp+0x54>
+  54:	mov    $0x1,%eax
+  59:	retq

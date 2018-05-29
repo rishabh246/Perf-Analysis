@@ -1,0 +1,24 @@
+('0000000000400ff0', 'dmap_put')
+Call
+callq  400550 <malloc@plt>
+Call
+callq  400520 <__stack_chk_fail@plt>
+Indirect call
+callq  *0x28(%rbx)
+Indirect call
+callq  *0x38(%rbx)
+Call
+callq  400c70 <map_put>
+Call
+callq  400c70 <map_put>
+Basic Blocks
+CFG has 4 nodes
+Node 0 can jump to Node 1
+Node 1 can jump to Node 2
+Node 1 can jump to Node 3
+Node 3 can jump to Node 2
+Node 3 can jump to Node 3
+Calls: 6
+0x401017 0x40108f 0x40102c 0x401047 0x401055 0x401066
+Indirect calls/jumps: 2
+0x40102c 0x401047
