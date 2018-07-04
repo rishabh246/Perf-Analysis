@@ -1,7 +1,0 @@
-('0000000000401410', 'flow_cpy')
-Basic Blocks
-CFG has 1 nodes
-Calls: 0
-
-Indirect calls/jumps: 0
-

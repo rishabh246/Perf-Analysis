@@ -1,7 +1,0 @@
-('0000000000400a70', 'map_init_free_list')
-Basic Blocks
-CFG has 1 nodes
-Calls: 0
-
-Indirect calls/jumps: 0
-

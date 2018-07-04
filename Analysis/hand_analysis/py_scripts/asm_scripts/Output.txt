@@ -1,45 +1,65 @@
-   0:	movzbl (%rdi),%ecx
-   3:	lea    0x14(%rdi),%rax
-   7:	and    $0xf,%ecx
-   a:	cmp    $0x5,%cl
-   d:	je     54 <handle_packet_timestamp+0x54>
-   f:	movzbl 0x14(%rdi),%ecx
-  13:	add    $0x15,%rdi
-  17:	test   %cl,%cl
-  19:	jne    41 <handle_packet_timestamp+0x41>
-  41:	cmp    $0x1,%cl
-  44:	jne    20 <handle_packet_timestamp+0x20>
-  20:	movzbl 0x1(%rax),%edi
-  24:	lea    0x2(%rax),%r8
-  28:	cmp    $0x44,%cl
-  2b:	je     60 <handle_packet_timestamp+0x60>
-  60:	movzbl 0x2(%rax),%ecx
-  64:	cmp    %cl,%dil
-  67:	jae    a0 <handle_packet_timestamp+0xa0>
-  a0:	movzbl 0x3(%rax),%r9d
-  a5:	lea    0x1(%rdi),%r10d
-  a9:	lea    0x3(%rax),%r11
-  ad:	sub    %ecx,%r10d
-  b0:	and    $0xf,%r9d
-  b4:	je     e0 <handle_packet_timestamp+0xe0>
-  b6:	cmp    $0x7,%r10b
-  ba:	jbe    118 <handle_packet_timestamp+0x118>
-  bc:	lea    -0x4(%r11,%rcx,1),%r10
-  c1:	cmp    $0x3,%r9b
-  c5:	jne    100 <handle_packet_timestamp+0x100>
-  c7:	cmp    %esi,(%r10)
-  ca:	je     109 <handle_packet_timestamp+0x109>
- 109:	add    $0x4,%r10
- 10d:	mov    $0x8,%ecx
- 112:	jmp    f0 <handle_packet_timestamp+0xf0>
-  f0:	mov    %edx,(%r10)
-  f3:	add    %cl,0x2(%rax)
-  f6:	jmpq   2d <handle_packet_timestamp+0x2d>
-  2d:	movzbl %dil,%ecx
-  31:	lea    -0x2(%r8,%rcx,1),%rax
-  36:	movzbl (%rax),%ecx
-  39:	lea    0x1(%rax),%rdi
-  3d:	test   %cl,%cl
-  3f:	je     54 <handle_packet_timestamp+0x54>
-  54:	mov    $0x1,%eax
-  59:	retq
+  401210:	push   %r12
+  401212:	push   %rbp
+  401213:	mov    %edx,%r12d
+  401216:	push   %rbx
+  401217:	mov    %rdi,%rbx
+  40121a:	sub    $0x20,%rsp
+  40121e:	mov    (%rdi),%ebp
+  401220:	mov    %fs:0x28,%rax
+  401229:	mov    %rax,0x18(%rsp)
+  40122e:	xor    %eax,%eax
+  401230:	movq   $0x0,0x8(%rsp)
+  401239:	movq   $0x0,0x10(%rsp)
+  401242:	imul   %edx,%ebp
+  401245:	movslq %ebp,%rbp
+  401248:	add    0x18(%rdi),%rbp
+  40124c:	mov    %rbp,%rdi
+  40124f:	callq  *0x8(%rbx)
+  401252:	lea    0x10(%rsp),%rdx
+  401257:	lea    0x8(%rsp),%rsi
+  40125c:	mov    %rbp,%rdi
+  40125f:	callq  *0x90(%rbx)
+  401265:	mov    0x8(%rsp),%rdi
+  40126a:	callq  *0x50(%rbx)
+  40126d:	mov    0xa8(%rbx),%r8d
+  401274:	sub    $0x8,%rsp
+  401278:	mov    0x38(%rbx),%rcx
+  40127c:	mov    0x30(%rbx),%rdx
+  401280:	mov    0x28(%rbx),%rsi
+  401284:	mov    0x20(%rbx),%rdi
+  401288:	push   %r8
+  40128a:	mov    0x40(%rbx),%r8
+  40128e:	push   %r12
+  401290:	push   %rax
+  401291:	mov    0x28(%rsp),%r9
+  401296:	callq  400b30 <map_impl_put>
+  40129b:	add    $0x20,%rsp
+  40129f:	mov    0x10(%rsp),%rdi
+  4012a4:	callq  *0x88(%rbx)
+  4012aa:	mov    0xa8(%rbx),%r8d
+  4012b1:	sub    $0x8,%rsp
+  4012b5:	mov    0x70(%rbx),%rcx
+  4012b9:	mov    0x68(%rbx),%rdx
+  4012bd:	mov    0x60(%rbx),%rsi
+  4012c1:	mov    0x58(%rbx),%rdi
+  4012c5:	push   %r8
+  4012c7:	mov    0x78(%rbx),%r8
+  4012cb:	push   %r12
+  4012cd:	push   %rax
+  4012ce:	mov    0x30(%rsp),%r9
+  4012d3:	callq  400b30 <map_impl_put>
+  4012d8:	add    $0x20,%rsp
+  4012dc:	addl   $0x1,0xa0(%rbx)
+  4012e3:	mov    0x10(%rsp),%rdx
+  4012e8:	mov    0x8(%rsp),%rsi
+  4012ed:	mov    %rbp,%rdi
+  4012f0:	callq  *0x98(%rbx)
+  4012f6:	mov    0x18(%rsp),%rcx
+  4012fb:	xor    %fs:0x28,%rcx
+  401304:	jne    401314 <dmap_put+0x104>
+  401306:	add    $0x20,%rsp
+  40130a:	mov    $0x1,%eax
+  40130f:	pop    %rbx
+  401310:	pop    %rbp
+  401311:	pop    %r12
+  401313:	retq

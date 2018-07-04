@@ -1,7 +1,0 @@
-('00000000004014b0', 'flow_destroy')
-Basic Blocks
-CFG has 1 nodes
-Calls: 0
-
-Indirect calls/jumps: 0
-

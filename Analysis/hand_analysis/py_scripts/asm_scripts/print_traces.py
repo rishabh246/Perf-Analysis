@@ -125,7 +125,7 @@ def calculate_perf():
     trace_lines = (line.rstrip() for line in f)
     trace_lines = list(line for line in trace_lines if line)
   for line in trace_lines:
-    if ("(%" in line or "(,%"in line ) and (not ("lea" or "call" or "nop") in line):
+    if ("(%" in line or "(,%"in line or "ret" in line  or "call" in line ) and (not ("lea" or "nop") in line):
         mem_insns =mem_insns +1
     elif "push" in line or "pop" in line :
         mem_insns = mem_insns+1
