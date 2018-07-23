@@ -13,7 +13,7 @@ objdump_file=sys.argv[2]
 
 fn_names=[
               "dchain_impl_allocate_new_index", "dchain_impl_free_index" ,"dchain_impl_get_oldest_index", "dchain_impl_init", "dchain_impl_rejuvenate_index",
-              "dchain_allocate" ,"dchain_allocate_new_index", "dchain_rejuvenate_index", #"dchain_expire_one_index",
+              "dchain_allocate" ,"dchain_allocate_new_index", "dchain_rejuvenate_index", "dchain_expire_one_index",
               "map_impl_init", "map_impl_get" ,"map_impl_put" ,"map_impl_erase",
               "map_allocate" ,"map_get" ,"map_put", "map_erase",
               "dmap_allocate" ,"dmap_get_a", "dmap_get_b", "dmap_put", "dmap_erase",
@@ -96,6 +96,7 @@ def calculate_perf():
                         'jne':1,
 			'jae':1,
                         'jbe':1,
+                        'jge':1,
                         'lea':3,
                          'mov':1,
                         'movabs':1,
