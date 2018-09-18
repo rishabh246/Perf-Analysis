@@ -20,7 +20,8 @@ fn_names=[
               "expire_items" ,"expire_items_single_map",
               "vector_allocate" ,"vector_borrow_full", "vector_borrow_half", "vector_return_full", "vector_return_half",
              "int_key_eq", "ext_key_eq", "int_key_hash","ext_key_hash", "flow_extract_keys", "flow_pack_keys", "flow_cpy","flow_destroy", 
-	     "handle_packet_timestamp"
+	     "handle_packet_timestamp",
+	     "lpm_lookup"
           ]
 fn_name=""
 bb_file=""
