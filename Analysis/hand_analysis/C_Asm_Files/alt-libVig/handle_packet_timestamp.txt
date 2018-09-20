@@ -1,0 +1,45 @@
+('0000000000000000', 'handle_packet_timestamp')
+Basic Blocks
+CFG has 25 nodes
+Node 0 can jump to Node 1
+Node 0 can jump to Node 2
+Node 2 can jump to Node 3
+Node 2 can jump to Node 24
+Node 3 can jump to Node 4
+Node 3 can jump to Node 23
+Node 4 can jump to Node 5
+Node 4 can jump to Node 10
+Node 5 can jump to Node 6
+Node 5 can jump to Node 21
+Node 6 can jump to Node 7
+Node 6 can jump to Node 11
+Node 7 can jump to Node 8
+Node 7 can jump to Node 9
+Node 9 can jump to Node 10
+Node 10 can jump to Node 1
+Node 10 can jump to Node 3
+Node 11 can jump to Node 8
+Node 11 can jump to Node 12
+Node 12 can jump to Node 13
+Node 12 can jump to Node 17
+Node 13 can jump to Node 14
+Node 13 can jump to Node 16
+Node 14 can jump to Node 15
+Node 15 can jump to Node 10
+Node 16 can jump to Node 15
+Node 17 can jump to Node 18
+Node 17 can jump to Node 19
+Node 18 can jump to Node 15
+Node 19 can jump to Node 20
+Node 20 can jump to Node 1
+Node 20 can jump to Node 3
+Node 21 can jump to Node 8
+Node 21 can jump to Node 22
+Node 22 can jump to Node 20
+Node 23 can jump to Node 1
+Node 23 can jump to Node 3
+Node 24 can jump to Node 1
+Calls: 0
+
+Indirect calls/jumps: 0
+

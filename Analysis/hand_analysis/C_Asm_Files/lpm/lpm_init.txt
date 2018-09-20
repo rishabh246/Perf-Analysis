@@ -1,0 +1,96 @@
+('0000000000000000', 'lpm_init')
+Call
+callq  3d <lpm_init+0x3d>
+Call
+callq  4e <lpm_init+0x4e>
+Call
+callq  1be <lpm_init+0x1be>
+Call
+callq  1d1 <lpm_init+0x1d1>
+Call
+callq  1d6 <lpm_init+0x1d6>
+Call
+callq  68 <lpm_init+0x68>
+Call
+callq  1b9 <lpm_init+0x1b9>
+Call
+callq  1be <lpm_init+0x1be>
+Call
+callq  1d1 <lpm_init+0x1d1>
+Call
+callq  1d6 <lpm_init+0x1d6>
+Call
+callq  d5 <lpm_init+0xd5>
+Call
+callq  148 <lpm_init+0x148>
+Call
+callq  1d6 <lpm_init+0x1d6>
+Call
+callq  17a <lpm_init+0x17a>
+Call
+callq  18e <lpm_init+0x18e>
+Call
+callq  1a5 <lpm_init+0x1a5>
+Call
+callq  1b9 <lpm_init+0x1b9>
+Call
+callq  1be <lpm_init+0x1be>
+Call
+callq  1d1 <lpm_init+0x1d1>
+Call
+callq  1d6 <lpm_init+0x1d6>
+Call
+callq  f7 <lpm_init+0xf7>
+Call
+callq  1a5 <lpm_init+0x1a5>
+Call
+callq  1b9 <lpm_init+0x1b9>
+Call
+callq  1be <lpm_init+0x1be>
+Call
+callq  1d1 <lpm_init+0x1d1>
+Call
+callq  1d6 <lpm_init+0x1d6>
+Call
+callq  114 <lpm_init+0x114>
+Call
+callq  94 <lpm_init+0x94>
+Call
+callq  ac <lpm_init+0xac>
+Call
+callq  18e <lpm_init+0x18e>
+Call
+callq  1a5 <lpm_init+0x1a5>
+Call
+callq  1b9 <lpm_init+0x1b9>
+Call
+callq  1be <lpm_init+0x1be>
+Call
+callq  1d1 <lpm_init+0x1d1>
+Call
+callq  1d6 <lpm_init+0x1d6>
+Call
+callq  125 <lpm_init+0x125>
+Call
+callq  136 <lpm_init+0x136>
+Basic Blocks
+CFG has 14 nodes
+Node 0 can jump to Node 1
+Node 0 can jump to Node 2
+Node 1 can jump to Node 3
+Node 1 can jump to Node 4
+Node 2 can jump to Node 5
+Node 3 can jump to Node 6
+Node 3 can jump to Node 9
+Node 4 can jump to Node 7
+Node 4 can jump to Node 8
+Node 6 can jump to Node 10
+Node 6 can jump to Node 11
+Node 7 can jump to Node 12
+Node 7 can jump to Node 13
+Node 10 can jump to Node 5
+Node 10 can jump to Node 6
+Calls: 37
+0x38 0x49 0x1b9 0x1cc 0x1d1 0x63 0x1b4 0x1b9 0x1cc 0x1d1 0xd0 0x143 0x1d1 0x175 0x189 0x1a0 0x1b4 0x1b9 0x1cc 0x1d1 0xf2 0x1a0 0x1b4 0x1b9 0x1cc 0x1d1 0x10f 0x8f 0xa7 0x189 0x1a0 0x1b4 0x1b9 0x1cc 0x1d1 0x120 0x131
+Indirect calls/jumps: 0
+

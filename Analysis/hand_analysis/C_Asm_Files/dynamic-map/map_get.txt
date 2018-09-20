@@ -1,0 +1,11 @@
+('0000000000400970', 'map_get')
+Indirect call
+callq  *0x38(%rax)
+Call
+callq  400c60 <map_impl_get>
+Basic Blocks
+CFG has 1 nodes
+Calls: 2
+0x400988 0x4009b8
+Indirect calls/jumps: 1
+0x400988

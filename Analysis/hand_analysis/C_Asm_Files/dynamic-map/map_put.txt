@@ -1,0 +1,33 @@
+('00000000004009d0', 'map_put')
+Indirect call
+callq  *%r13
+Call
+callq  400d80 <map_impl_put>
+Call
+callq  400c30 <map_impl_init>
+Call
+callq  400510 <rand@plt>
+Call
+callq  4004e0 <__stack_chk_fail@plt>
+Indirect call
+callq  *%r13
+Call
+callq  400d80 <map_impl_put>
+Basic Blocks
+CFG has 9 nodes
+Node 0 can jump to Node 1
+Node 0 can jump to Node 3
+Node 1 can jump to Node 2
+Node 1 can jump to Node 6
+Node 2 can jump to Node 3
+Node 3 can jump to Node 4
+Node 3 can jump to Node 5
+Node 5 can jump to Node 7
+Node 6 can jump to Node 8
+Node 7 can jump to Node 2
+Node 7 can jump to Node 7
+Node 8 can jump to Node 8
+Calls: 7
+0x400a13 0x400a42 0x400ab2 0x400aca 0x400b9f 0x400b33 0x400b6d
+Indirect calls/jumps: 2
+0x400a13 0x400b33

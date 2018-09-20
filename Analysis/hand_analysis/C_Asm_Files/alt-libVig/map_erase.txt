@@ -1,0 +1,11 @@
+('00000000004017f0', 'map_erase')
+Indirect call
+callq  *0x38(%rbx)
+Call
+callq  400c40 <map_impl_erase>
+Basic Blocks
+CFG has 1 nodes
+Calls: 2
+0x401800 0x401824
+Indirect calls/jumps: 1
+0x401800

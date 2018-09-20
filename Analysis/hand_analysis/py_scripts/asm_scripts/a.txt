@@ -1,0 +1,26 @@
+400F50 |expire_items | push r13 | w7FFDE70A8E20
+400F52 |expire_items | push r12 | w7FFDE70A8E18
+400F54 |expire_items | mov r13, rsi |
+400F57 |expire_items | push rbp | w7FFDE70A8E10
+400F58 |expire_items | push rbx | w7FFDE70A8E08
+400F59 |expire_items | mov r12, rdi |
+400F5C |expire_items | mov rbp, rdx |
+400F5F |expire_items | xor ebx, ebx |
+400F61 |expire_items | sub rsp, 0x18 |
+400F65 |expire_items | mov rax, qword ptr fs:[0x28] | r7F0C8E2A7728
+400F6E |expire_items | mov qword ptr [rsp+0x8], rax | w7FFDE70A8DF8
+400F73 |expire_items | xor eax, eax |
+400F75 |expire_items | mov dword ptr [rsp+0x4], 0xffffffff | w7FFDE70A8DF4
+400F7D |expire_items | jmp 0x400f8f |
+400F8F |expire_items | lea rsi, ptr [rsp+0x4] |
+400F94 |expire_items | mov rdx, rbp |
+400F97 |expire_items | mov rdi, r12 |
+400F9A |expire_items | call 0x401190 | w7FFDE70A8DE8
+401190 |dchain_expire_one_index | push r12 | w7FFDE70A8DE0
+401192 |dchain_expire_one_index | push rbp | w7FFDE70A8DD8
+401193 |dchain_expire_one_index | mov r12, rdx |
+401196 |dchain_expire_one_index | push rbx | w7FFDE70A8DD0
+401197 |dchain_expire_one_index | mov rbx, rdi |
+40119A |dchain_expire_one_index | mov rdi, qword ptr [rdi] | r1D62CB0
+40119D |dchain_expire_one_index | mov rbp, rsi |
+4011A0 |dchain_expire_one_index | call 0x4012d0 | w7FFDE70A8DC8

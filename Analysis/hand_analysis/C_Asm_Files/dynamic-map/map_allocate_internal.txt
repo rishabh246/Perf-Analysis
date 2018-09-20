@@ -1,0 +1,7 @@
+Could not find root function for CFG: map_allocate_internal
+Basic Blocks
+CFG has 0 nodes
+Calls: 0
+
+Indirect calls/jumps: 0
+

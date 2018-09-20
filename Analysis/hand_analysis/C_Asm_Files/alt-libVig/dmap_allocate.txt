@@ -1,0 +1,196 @@
+('0000000000400d80', 'dmap_allocate')
+Call
+callq  4004c0 <malloc@plt>
+Call
+callq  4004c0 <malloc@plt>
+Call
+callq  400490 <free@plt>
+Call
+callq  4004c0 <malloc@plt>
+Call
+callq  400490 <free@plt>
+Call
+callq  400490 <free@plt>
+Call
+callq  4004c0 <malloc@plt>
+Call
+callq  400490 <free@plt>
+Call
+callq  400490 <free@plt>
+Call
+callq  400490 <free@plt>
+Call
+callq  4004c0 <malloc@plt>
+Call
+callq  400490 <free@plt>
+Call
+callq  400490 <free@plt>
+Call
+callq  400490 <free@plt>
+Call
+callq  400490 <free@plt>
+Call
+callq  4004c0 <malloc@plt>
+Call
+callq  400490 <free@plt>
+Call
+callq  400490 <free@plt>
+Call
+callq  400490 <free@plt>
+Call
+callq  400490 <free@plt>
+Call
+callq  4004c0 <malloc@plt>
+Call
+callq  400490 <free@plt>
+Call
+callq  400490 <free@plt>
+Call
+callq  400490 <free@plt>
+Call
+callq  400490 <free@plt>
+Call
+callq  400490 <free@plt>
+Call
+callq  4004c0 <malloc@plt>
+Call
+callq  400490 <free@plt>
+Call
+callq  400490 <free@plt>
+Call
+callq  400490 <free@plt>
+Call
+callq  400490 <free@plt>
+Call
+callq  400490 <free@plt>
+Call
+callq  400490 <free@plt>
+Call
+callq  400490 <free@plt>
+Call
+callq  4004c0 <malloc@plt>
+Call
+callq  400490 <free@plt>
+Call
+callq  400490 <free@plt>
+Call
+callq  400490 <free@plt>
+Call
+callq  400490 <free@plt>
+Call
+callq  400490 <free@plt>
+Call
+callq  400490 <free@plt>
+Call
+callq  400490 <free@plt>
+Call
+callq  4004c0 <malloc@plt>
+Call
+callq  400490 <free@plt>
+Call
+callq  400490 <free@plt>
+Call
+callq  400490 <free@plt>
+Call
+callq  400490 <free@plt>
+Call
+callq  400490 <free@plt>
+Call
+callq  400490 <free@plt>
+Call
+callq  400490 <free@plt>
+Call
+callq  400490 <free@plt>
+Call
+callq  400490 <free@plt>
+Call
+callq  4004c0 <malloc@plt>
+Call
+callq  400490 <free@plt>
+Call
+callq  400490 <free@plt>
+Call
+callq  400490 <free@plt>
+Call
+callq  400490 <free@plt>
+Call
+callq  400490 <free@plt>
+Call
+callq  400490 <free@plt>
+Call
+callq  400490 <free@plt>
+Call
+callq  400490 <free@plt>
+Call
+callq  400490 <free@plt>
+Call
+callq  400490 <free@plt>
+Call
+callq  4004c0 <malloc@plt>
+Call
+callq  400490 <free@plt>
+Call
+callq  400490 <free@plt>
+Call
+callq  400490 <free@plt>
+Call
+callq  400490 <free@plt>
+Call
+callq  400490 <free@plt>
+Call
+callq  400490 <free@plt>
+Call
+callq  400490 <free@plt>
+Call
+callq  400490 <free@plt>
+Call
+callq  400490 <free@plt>
+Call
+callq  400490 <free@plt>
+Call
+callq  400490 <free@plt>
+Call
+callq  400a20 <map_impl_init>
+Call
+callq  400a20 <map_impl_init>
+Basic Blocks
+CFG has 25 nodes
+Node 0 can jump to Node 1
+Node 0 can jump to Node 2
+Node 2 can jump to Node 3
+Node 2 can jump to Node 4
+Node 3 can jump to Node 1
+Node 4 can jump to Node 5
+Node 4 can jump to Node 6
+Node 5 can jump to Node 1
+Node 6 can jump to Node 7
+Node 6 can jump to Node 8
+Node 7 can jump to Node 1
+Node 8 can jump to Node 9
+Node 8 can jump to Node 10
+Node 9 can jump to Node 1
+Node 10 can jump to Node 11
+Node 10 can jump to Node 12
+Node 11 can jump to Node 3
+Node 12 can jump to Node 13
+Node 12 can jump to Node 14
+Node 13 can jump to Node 3
+Node 14 can jump to Node 15
+Node 14 can jump to Node 16
+Node 15 can jump to Node 1
+Node 16 can jump to Node 17
+Node 16 can jump to Node 18
+Node 17 can jump to Node 3
+Node 18 can jump to Node 19
+Node 18 can jump to Node 20
+Node 19 can jump to Node 1
+Node 20 can jump to Node 21
+Node 20 can jump to Node 22
+Node 21 can jump to Node 1
+Node 22 can jump to Node 23
+Node 22 can jump to Node 24
+Node 23 can jump to Node 1
+Calls: 77
+0x400dc7 0x400df1 0x40105d 0x400e19 0x401055 0x40105d 0x400e35 0x40104d 0x401055 0x40105d 0x400e54 0x401045 0x40104d 0x401055 0x40105d 0x400e73 0x40109b 0x4010a5 0x4010ad 0x4010b5 0x400e92 0x401091 0x40109b 0x4010a5 0x4010ad 0x4010b5 0x400eb1 0x4010d7 0x4010e1 0x4010eb 0x4010f5 0x4010fd 0x401105 0x40110d 0x400ed0 0x40107d 0x401087 0x401091 0x40109b 0x4010a5 0x4010ad 0x4010b5 0x400ee8 0x4010c3 0x4010cd 0x4010d7 0x4010e1 0x4010eb 0x4010f5 0x4010fd 0x401105 0x40110d 0x400f00 0x40113e 0x401146 0x401150 0x40115a 0x401164 0x40116e 0x401178 0x401180 0x401188 0x401190 0x400f1a 0x401133 0x40113e 0x401146 0x401150 0x40115a 0x401164 0x40116e 0x401178 0x401180 0x401188 0x401190 0x400fd7 0x40100d
+Indirect calls/jumps: 0
+

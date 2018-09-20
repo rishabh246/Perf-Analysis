@@ -1,0 +1,154 @@
+
+lpm_dpdk.o:     file format elf64-x86-64
+
+
+Disassembly of section .text:
+
+0000000000000000 <lpm_init>:
+   0:	41 55                	push   %r13
+   2:	49 89 fd             	mov    %rdi,%r13
+   5:	41 54                	push   %r12
+   7:	49 89 f4             	mov    %rsi,%r12
+   a:	55                   	push   %rbp
+   b:	53                   	push   %rbx
+   c:	48 83 ec 48          	sub    $0x48,%rsp
+  10:	64 48 8b 04 25 28 00 	mov    %fs:0x28,%rax
+  17:	00 00 
+  19:	48 89 44 24 38       	mov    %rax,0x38(%rsp)
+  1e:	31 c0                	xor    %eax,%eax
+  20:	c7 44 24 10 40 42 0f 	movl   $0xf4240,0x10(%rsp)
+  27:	00 
+  28:	c7 44 24 14 00 01 00 	movl   $0x100,0x14(%rsp)
+  2f:	00 
+  30:	c7 44 24 18 00 00 00 	movl   $0x0,0x18(%rsp)
+  37:	00 
+  38:	e8 00 00 00 00       	callq  3d <lpm_init+0x3d>
+  3d:	48 8d 54 24 10       	lea    0x10(%rsp),%rdx
+  42:	bf 00 00 00 00       	mov    $0x0,%edi
+  47:	89 c6                	mov    %eax,%esi
+  49:	e8 00 00 00 00       	callq  4e <lpm_init+0x4e>
+  4e:	49 89 04 24          	mov    %rax,(%r12)
+  52:	48 85 c0             	test   %rax,%rax
+  55:	0f 84 5e 01 00 00    	je     1b9 <lpm_init+0x1b9>
+  5b:	be 00 00 00 00       	mov    $0x0,%esi
+  60:	4c 89 ef             	mov    %r13,%rdi
+  63:	e8 00 00 00 00       	callq  68 <lpm_init+0x68>
+  68:	48 89 c3             	mov    %rax,%rbx
+  6b:	48 85 c0             	test   %rax,%rax
+  6e:	0f 84 31 01 00 00    	je     1a5 <lpm_init+0x1a5>
+  74:	31 ed                	xor    %ebp,%ebp
+  76:	eb 49                	jmp    c1 <lpm_init+0xc1>
+  78:	0f 1f 84 00 00 00 00 	nopl   0x0(%rax,%rax,1)
+  7f:	00 
+  80:	48 8d 54 24 08       	lea    0x8(%rsp),%rdx
+  85:	bf 02 00 00 00       	mov    $0x2,%edi
+  8a:	48 8d 74 24 20       	lea    0x20(%rsp),%rsi
+  8f:	e8 00 00 00 00       	callq  94 <lpm_init+0x94>
+  94:	8b 74 24 08          	mov    0x8(%rsp),%esi
+  98:	0f b6 54 24 07       	movzbl 0x7(%rsp),%edx
+  9d:	8b 4c 24 0c          	mov    0xc(%rsp),%ecx
+  a1:	49 8b 3c 24          	mov    (%r12),%rdi
+  a5:	0f ce                	bswap  %esi
+  a7:	e8 00 00 00 00       	callq  ac <lpm_init+0xac>
+  ac:	85 c0                	test   %eax,%eax
+  ae:	0f 88 c6 00 00 00    	js     17a <lpm_init+0x17a>
+  b4:	48 83 c5 01          	add    $0x1,%rbp
+  b8:	48 81 fd 40 42 0f 00 	cmp    $0xf4240,%rbp
+  bf:	74 7f                	je     140 <lpm_init+0x140>
+  c1:	31 c0                	xor    %eax,%eax
+  c3:	be 00 00 00 00       	mov    $0x0,%esi
+  c8:	48 89 df             	mov    %rbx,%rdi
+  cb:	48 8d 54 24 20       	lea    0x20(%rsp),%rdx
+  d0:	e8 00 00 00 00       	callq  d5 <lpm_init+0xd5>
+  d5:	83 f8 ff             	cmp    $0xffffffff,%eax
+  d8:	74 66                	je     140 <lpm_init+0x140>
+  da:	83 f8 01             	cmp    $0x1,%eax
+  dd:	0f 85 80 00 00 00    	jne    163 <lpm_init+0x163>
+  e3:	31 c0                	xor    %eax,%eax
+  e5:	be 00 00 00 00       	mov    $0x0,%esi
+  ea:	48 89 df             	mov    %rbx,%rdi
+  ed:	48 8d 54 24 07       	lea    0x7(%rsp),%rdx
+  f2:	e8 00 00 00 00       	callq  f7 <lpm_init+0xf7>
+  f7:	83 f8 01             	cmp    $0x1,%eax
+  fa:	0f 85 8e 00 00 00    	jne    18e <lpm_init+0x18e>
+ 100:	31 c0                	xor    %eax,%eax
+ 102:	be 00 00 00 00       	mov    $0x0,%esi
+ 107:	48 89 df             	mov    %rbx,%rdi
+ 10a:	48 8d 54 24 0c       	lea    0xc(%rsp),%rdx
+ 10f:	e8 00 00 00 00       	callq  114 <lpm_init+0x114>
+ 114:	83 f8 01             	cmp    $0x1,%eax
+ 117:	0f 85 63 ff ff ff    	jne    80 <lpm_init+0x80>
+ 11d:	48 89 df             	mov    %rbx,%rdi
+ 120:	e8 00 00 00 00       	callq  125 <lpm_init+0x125>
+ 125:	83 f8 0a             	cmp    $0xa,%eax
+ 128:	0f 84 52 ff ff ff    	je     80 <lpm_init+0x80>
+ 12e:	48 89 df             	mov    %rbx,%rdi
+ 131:	e8 00 00 00 00       	callq  136 <lpm_init+0x136>
+ 136:	83 f8 0a             	cmp    $0xa,%eax
+ 139:	75 e2                	jne    11d <lpm_init+0x11d>
+ 13b:	e9 40 ff ff ff       	jmpq   80 <lpm_init+0x80>
+ 140:	48 89 df             	mov    %rbx,%rdi
+ 143:	e8 00 00 00 00       	callq  148 <lpm_init+0x148>
+ 148:	48 8b 44 24 38       	mov    0x38(%rsp),%rax
+ 14d:	64 48 33 04 25 28 00 	xor    %fs:0x28,%rax
+ 154:	00 00 
+ 156:	75 79                	jne    1d1 <lpm_init+0x1d1>
+ 158:	48 83 c4 48          	add    $0x48,%rsp
+ 15c:	5b                   	pop    %rbx
+ 15d:	5d                   	pop    %rbp
+ 15e:	41 5c                	pop    %r12
+ 160:	41 5d                	pop    %r13
+ 162:	c3                   	retq   
+ 163:	48 89 e9             	mov    %rbp,%rcx
+ 166:	4c 89 ea             	mov    %r13,%rdx
+ 169:	be 00 00 00 00       	mov    $0x0,%esi
+ 16e:	bf 01 00 00 00       	mov    $0x1,%edi
+ 173:	31 c0                	xor    %eax,%eax
+ 175:	e8 00 00 00 00       	callq  17a <lpm_init+0x17a>
+ 17a:	48 89 ea             	mov    %rbp,%rdx
+ 17d:	be 00 00 00 00       	mov    $0x0,%esi
+ 182:	bf 01 00 00 00       	mov    $0x1,%edi
+ 187:	31 c0                	xor    %eax,%eax
+ 189:	e8 00 00 00 00       	callq  18e <lpm_init+0x18e>
+ 18e:	48 89 e9             	mov    %rbp,%rcx
+ 191:	4c 89 ea             	mov    %r13,%rdx
+ 194:	be 00 00 00 00       	mov    $0x0,%esi
+ 199:	bf 01 00 00 00       	mov    $0x1,%edi
+ 19e:	31 c0                	xor    %eax,%eax
+ 1a0:	e8 00 00 00 00       	callq  1a5 <lpm_init+0x1a5>
+ 1a5:	4c 89 ea             	mov    %r13,%rdx
+ 1a8:	be 00 00 00 00       	mov    $0x0,%esi
+ 1ad:	bf 01 00 00 00       	mov    $0x1,%edi
+ 1b2:	31 c0                	xor    %eax,%eax
+ 1b4:	e8 00 00 00 00       	callq  1b9 <lpm_init+0x1b9>
+ 1b9:	e8 00 00 00 00       	callq  1be <lpm_init+0x1be>
+ 1be:	be 00 00 00 00       	mov    $0x0,%esi
+ 1c3:	bf 01 00 00 00       	mov    $0x1,%edi
+ 1c8:	89 c2                	mov    %eax,%edx
+ 1ca:	31 c0                	xor    %eax,%eax
+ 1cc:	e8 00 00 00 00       	callq  1d1 <lpm_init+0x1d1>
+ 1d1:	e8 00 00 00 00       	callq  1d6 <lpm_init+0x1d6>
+ 1d6:	66 2e 0f 1f 84 00 00 	nopw   %cs:0x0(%rax,%rax,1)
+ 1dd:	00 00 00 
+
+00000000000001e0 <lpm_lookup>:
+ 1e0:	89 f0                	mov    %esi,%eax
+ 1e2:	c1 e8 08             	shr    $0x8,%eax
+ 1e5:	8b 94 87 40 01 00 00 	mov    0x140(%rdi,%rax,4),%edx
+ 1ec:	89 d0                	mov    %edx,%eax
+ 1ee:	25 00 00 00 03       	and    $0x3000000,%eax
+ 1f3:	3d 00 00 00 03       	cmp    $0x3000000,%eax
+ 1f8:	74 16                	je     210 <lpm_lookup+0x30>
+ 1fa:	b8 ff ff ff ff       	mov    $0xffffffff,%eax
+ 1ff:	f7 c2 00 00 00 01    	test   $0x1000000,%edx
+ 205:	74 07                	je     20e <lpm_lookup+0x2e>
+ 207:	89 d0                	mov    %edx,%eax
+ 209:	25 ff ff ff 00       	and    $0xffffff,%eax
+ 20e:	c3                   	retq   
+ 20f:	90                   	nop
+ 210:	48 8b 87 40 01 00 04 	mov    0x4000140(%rdi),%rax
+ 217:	c1 e2 08             	shl    $0x8,%edx
+ 21a:	40 0f b6 f6          	movzbl %sil,%esi
+ 21e:	01 f2                	add    %esi,%edx
+ 220:	8b 14 90             	mov    (%rax,%rdx,4),%edx
+ 223:	eb d5                	jmp    1fa <lpm_lookup+0x1a>

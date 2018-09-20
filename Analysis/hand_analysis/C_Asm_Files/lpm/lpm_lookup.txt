@@ -1,0 +1,12 @@
+('00000000000001e0', 'lpm_lookup')
+Basic Blocks
+CFG has 5 nodes
+Node 0 can jump to Node 1
+Node 0 can jump to Node 2
+Node 1 can jump to Node 2
+Node 2 can jump to Node 3
+Node 2 can jump to Node 4
+Calls: 0
+
+Indirect calls/jumps: 0
+

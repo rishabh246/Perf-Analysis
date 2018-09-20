@@ -1,0 +1,25 @@
+('0000000000400670', 'expire_items_single_map')
+Call
+callq  4009a0 <dchain_expire_one_index>
+Call
+callq  4015a0 <vector_borrow_half>
+Call
+callq  4017f0 <map_erase>
+Call
+callq  4015b0 <vector_return_full>
+Call
+callq  4009a0 <dchain_expire_one_index>
+Call
+callq  4004a0 <__stack_chk_fail@plt>
+Basic Blocks
+CFG has 5 nodes
+Node 0 can jump to Node 1
+Node 1 can jump to Node 2
+Node 1 can jump to Node 3
+Node 2 can jump to Node 2
+Node 2 can jump to Node 3
+Node 3 can jump to Node 4
+Calls: 6
+0x4006ea 0x4006b7 0x4006c9 0x4006da 0x4006ea 0x400712
+Indirect calls/jumps: 0
+
