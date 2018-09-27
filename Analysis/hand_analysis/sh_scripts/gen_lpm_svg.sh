@@ -1,6 +1,6 @@
 #!/bin/bash
 declare -a fn_names=(
-		"lpm_init" "lpm_lookup"	
+		 "lpm_lookup"	
 	)
 for fn_name in "${fn_names[@]}"
 do
