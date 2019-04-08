@@ -22,6 +22,7 @@ fn_names=[
              "int_key_eq", "ext_key_eq", "int_key_hash","ext_key_hash", "flow_extract_keys", "flow_pack_keys", "flow_cpy","flow_destroy", 
 	     "handle_packet_timestamp",
 	     "lpm_lookup"
+	     "lb_find_preferred_available_backend"
           ]
 fn_name=""
 bb_file=""

@@ -1,0 +1,196 @@
+('000000000044c040', 'dmap_allocate')
+Call
+callq  43e4a0 <malloc@plt>
+Call
+callq  43e4a0 <malloc@plt>
+Call
+callq  43e610 <free@plt>
+Call
+callq  43e4a0 <malloc@plt>
+Call
+callq  43e610 <free@plt>
+Call
+callq  43e610 <free@plt>
+Call
+callq  43e4a0 <malloc@plt>
+Call
+callq  43e610 <free@plt>
+Call
+callq  43e610 <free@plt>
+Call
+callq  43e610 <free@plt>
+Call
+callq  43e4a0 <malloc@plt>
+Call
+callq  43e610 <free@plt>
+Call
+callq  43e610 <free@plt>
+Call
+callq  43e610 <free@plt>
+Call
+callq  43e610 <free@plt>
+Call
+callq  43e4a0 <malloc@plt>
+Call
+callq  43e610 <free@plt>
+Call
+callq  43e610 <free@plt>
+Call
+callq  43e610 <free@plt>
+Call
+callq  43e610 <free@plt>
+Call
+callq  43e4a0 <malloc@plt>
+Call
+callq  43e610 <free@plt>
+Call
+callq  43e610 <free@plt>
+Call
+callq  43e610 <free@plt>
+Call
+callq  43e610 <free@plt>
+Call
+callq  43e610 <free@plt>
+Call
+callq  43e4a0 <malloc@plt>
+Call
+callq  43e610 <free@plt>
+Call
+callq  43e610 <free@plt>
+Call
+callq  43e610 <free@plt>
+Call
+callq  43e610 <free@plt>
+Call
+callq  43e610 <free@plt>
+Call
+callq  43e610 <free@plt>
+Call
+callq  43e610 <free@plt>
+Call
+callq  43e4a0 <malloc@plt>
+Call
+callq  43e610 <free@plt>
+Call
+callq  43e610 <free@plt>
+Call
+callq  43e610 <free@plt>
+Call
+callq  43e610 <free@plt>
+Call
+callq  43e610 <free@plt>
+Call
+callq  43e610 <free@plt>
+Call
+callq  43e610 <free@plt>
+Call
+callq  43e4a0 <malloc@plt>
+Call
+callq  43e610 <free@plt>
+Call
+callq  43e610 <free@plt>
+Call
+callq  43e610 <free@plt>
+Call
+callq  43e610 <free@plt>
+Call
+callq  43e610 <free@plt>
+Call
+callq  43e610 <free@plt>
+Call
+callq  43e610 <free@plt>
+Call
+callq  43e610 <free@plt>
+Call
+callq  43e610 <free@plt>
+Call
+callq  43e4a0 <malloc@plt>
+Call
+callq  43e610 <free@plt>
+Call
+callq  43e610 <free@plt>
+Call
+callq  43e610 <free@plt>
+Call
+callq  43e610 <free@plt>
+Call
+callq  43e610 <free@plt>
+Call
+callq  43e610 <free@plt>
+Call
+callq  43e610 <free@plt>
+Call
+callq  43e610 <free@plt>
+Call
+callq  43e610 <free@plt>
+Call
+callq  43e610 <free@plt>
+Call
+callq  43e4a0 <malloc@plt>
+Call
+callq  43e610 <free@plt>
+Call
+callq  43e610 <free@plt>
+Call
+callq  43e610 <free@plt>
+Call
+callq  43e610 <free@plt>
+Call
+callq  43e610 <free@plt>
+Call
+callq  43e610 <free@plt>
+Call
+callq  43e610 <free@plt>
+Call
+callq  43e610 <free@plt>
+Call
+callq  43e610 <free@plt>
+Call
+callq  43e610 <free@plt>
+Call
+callq  43e610 <free@plt>
+Call
+callq  44bce0 <map_impl_init>
+Call
+callq  44bce0 <map_impl_init>
+Basic Blocks
+CFG has 25 nodes
+Node 0 can jump to Node 1
+Node 0 can jump to Node 2
+Node 2 can jump to Node 3
+Node 2 can jump to Node 4
+Node 3 can jump to Node 1
+Node 4 can jump to Node 5
+Node 4 can jump to Node 6
+Node 5 can jump to Node 1
+Node 6 can jump to Node 7
+Node 6 can jump to Node 8
+Node 7 can jump to Node 1
+Node 8 can jump to Node 9
+Node 8 can jump to Node 10
+Node 9 can jump to Node 1
+Node 10 can jump to Node 11
+Node 10 can jump to Node 12
+Node 11 can jump to Node 3
+Node 12 can jump to Node 13
+Node 12 can jump to Node 14
+Node 13 can jump to Node 3
+Node 14 can jump to Node 15
+Node 14 can jump to Node 16
+Node 15 can jump to Node 1
+Node 16 can jump to Node 17
+Node 16 can jump to Node 18
+Node 17 can jump to Node 3
+Node 18 can jump to Node 19
+Node 18 can jump to Node 20
+Node 19 can jump to Node 1
+Node 20 can jump to Node 21
+Node 20 can jump to Node 22
+Node 21 can jump to Node 1
+Node 22 can jump to Node 23
+Node 22 can jump to Node 24
+Node 23 can jump to Node 1
+Calls: 77
+0x44c087 0x44c0b1 0x44c31d 0x44c0d9 0x44c315 0x44c31d 0x44c0f5 0x44c30d 0x44c315 0x44c31d 0x44c114 0x44c305 0x44c30d 0x44c315 0x44c31d 0x44c133 0x44c35b 0x44c365 0x44c36d 0x44c375 0x44c152 0x44c351 0x44c35b 0x44c365 0x44c36d 0x44c375 0x44c171 0x44c397 0x44c3a1 0x44c3ab 0x44c3b5 0x44c3bd 0x44c3c5 0x44c3cd 0x44c190 0x44c33d 0x44c347 0x44c351 0x44c35b 0x44c365 0x44c36d 0x44c375 0x44c1a8 0x44c383 0x44c38d 0x44c397 0x44c3a1 0x44c3ab 0x44c3b5 0x44c3bd 0x44c3c5 0x44c3cd 0x44c1c0 0x44c3fe 0x44c406 0x44c410 0x44c41a 0x44c424 0x44c42e 0x44c438 0x44c440 0x44c448 0x44c450 0x44c1da 0x44c3f3 0x44c3fe 0x44c406 0x44c410 0x44c41a 0x44c424 0x44c42e 0x44c438 0x44c440 0x44c448 0x44c450 0x44c297 0x44c2cd
+Indirect calls/jumps: 0
+

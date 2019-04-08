@@ -1,0 +1,11 @@
+('000000000044bc30', 'map_put')
+Indirect call
+callq  *0x38(%rbx)
+Call
+callq  44be30 <map_impl_put>
+Basic Blocks
+CFG has 1 nodes
+Calls: 2
+0x44bc40 0x44bc64
+Indirect calls/jumps: 1
+0x44bc40

@@ -1,0 +1,11 @@
+('000000000044c470', 'dmap_get_a')
+Indirect call
+callq  *0x50(%rbx)
+Call
+callq  44bd10 <map_impl_get>
+Basic Blocks
+CFG has 1 nodes
+Calls: 2
+0x44c480 0x44c4a9
+Indirect calls/jumps: 1
+0x44c480
